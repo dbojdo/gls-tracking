@@ -8,6 +8,8 @@
 
 namespace Webit\GlsTracking\Model;
 
+use JMS\Serializer\Annotation as JMS;
+
 /**
  * Class CustomerReference
  * @package Webit\GlsTracking\Model
@@ -15,11 +17,17 @@ namespace Webit\GlsTracking\Model;
 class CustomerReference
 {
     /**
+     * @JMS\Type("string")
+     * @JMS\SerializedName("ReferenceType")
+     *
      * @var string
      */
     private $type;
 
     /**
+     * @JMS\Type("string")
+     * @JMS\SerializedName("ReferenceValue")
+     *
      * @var string
      */
     private $value;

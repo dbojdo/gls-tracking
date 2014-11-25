@@ -8,6 +8,8 @@
 
 namespace Webit\GlsTracking\Model;
 
+use JMS\Serializer\Annotation as JMS;
+
 /**
  * Class Address
  * @package Webit\GlsTracking\Model
@@ -15,61 +17,97 @@ namespace Webit\GlsTracking\Model;
 class Address
 {
     /**
+     * @JMS\Type("string")
+     * @JMS\SerializedName("Name1")
+     *
      * @var string
      */
     private $name1;
 
     /**
+     * @JMS\Type("string")
+     * @JMS\SerializedName("Name2")
+     *
      * @var string
      */
     private $name2;
 
     /**
+     * @JMS\Type("string")
+     * @JMS\SerializedName("Name3")
+     *
      * @var string
      */
     private $name3;
 
     /**
+     * @JMS\Type("string")
+     * @JMS\SerializedName("ContactName")
+     *
      * @var string
      */
     private $contactName;
 
     /**
+     * @JMS\Type("string")
+     * @JMS\SerializedName("Street1")
+     *
      * @var string
      */
     private $street1;
 
     /**
+     * @JMS\Type("string")
+     * @JMS\SerializedName("BlockNo1")
+     *
      * @var string
      */
     private $blockNo1;
 
     /**
+     * @JMS\Type("string")
+     * @JMS\SerializedName("Street2")
+     *
      * @var string
      */
     private $street2;
 
     /**
+     * @JMS\Type("string")
+     * @JMS\SerializedName("BlockNo2")
+     *
      * @var string
      */
     private $blockNo2;
 
     /**
+     * @JMS\Type("string")
+     * @JMS\SerializedName("ZipCode")
+     *
      * @var string
      */
     private $zipCode;
 
     /**
+     * @JMS\Type("string")
+     * @JMS\SerializedName("City")
+     *
      * @var string
      */
     private $city;
 
     /**
+     * @JMS\Type("string")
+     * @JMS\SerializedName("Province")
+     *
      * @var string
      */
     private $province;
 
     /**
+     * @JMS\Type("string")
+     * @JMS\SerializedName("Country")
+     *
      * @var string
      */
     private $country;

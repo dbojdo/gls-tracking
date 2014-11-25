@@ -8,6 +8,8 @@
 
 namespace Webit\GlsTracking\Model;
 
+use JMS\Serializer\Annotation as JMS;
+
 /**
  * Class UserCredentials
  * @package Webit\GlsTracking\Model
@@ -15,11 +17,19 @@ namespace Webit\GlsTracking\Model;
 class UserCredentials
 {
     /**
+     * @JMS\Type("string")
+     * @JMS\SerializedName("UserName")
+     * @JMS\Groups({"input"})
+     *
      * @var string
      */
     private $username;
 
     /**
+     * @JMS\Type("string")
+     * @JMS\SerializedName("Password")
+     * @JMS\Groups({"input"})
+     *
      * @var string
      */
     private $password;

@@ -8,6 +8,8 @@
 
 namespace Webit\GlsTracking\Model;
 
+use JMS\Serializer\Annotation as JMS;
+
 /**
  * Class UnitRow
  * @package Webit\GlsTracking\Model
@@ -15,51 +17,81 @@ namespace Webit\GlsTracking\Model;
 class UnitRow
 {
     /**
+     * @JMS\Type("string")
+     * @JMS\SerializedName("RefNo")
+     *
      * @var string
      */
     private $referenceNo;
 
     /**
+     * @JMS\Type("Webit\GlsTracking\Model\DateTime")
+     * @JMS\SerializedName("InitialDateTime")
+     *
      * @var DateTime
      */
     private $initialDateTime;
 
     /**
+     * @JMS\Type("string")
+     * @JMS\SerializedName("EvtCodeNo")
+     *
      * @var string
      */
     private $eventCodeNo;
 
     /**
+     * @JMS\Type("string")
+     * @JMS\SerializedName("EvtReasonNo")
+     *
      * @var string
      */
     private $eventReasonNo;
 
     /**
+     * @JMS\Type("string")
+     * @JMS\SerializedName("CountryCode")
+     *
      * @var string
      */
     private $countryCode;
 
     /**
+     * @JMS\Type("string")
+     * @JMS\SerializedName("ZipCode")
+     *
      * @var string
      */
     private $zipCode;
 
     /**
+     * @JMS\Type("string")
+     * @JMS\SerializedName("City")
+     *
      * @var string
      */
     private $city;
 
     /**
+     * @JMS\Type("string")
+     * @JMS\SerializedName("ConsigneeName")
+     *
      * @var string
      */
     private $consigneeName;
 
     /**
+     * @JMS\Type("string")
+     * @JMS\SerializedName("ReferenceKey")
+     *
      * @var string
      */
     private $referenceKey;
 
     /**
+     * @JMS\Type("string")
+     * @JMS\SerializedName("CurrentStatus")
+     *
      * @var string
      */
     private $currentStatus;

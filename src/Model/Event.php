@@ -8,6 +8,8 @@
 
 namespace Webit\GlsTracking\Model;
 
+use JMS\Serializer\Annotation as JMS;
+
 /**
  * Class Event
  * @package Webit\GlsTracking\Model
@@ -15,36 +17,57 @@ namespace Webit\GlsTracking\Model;
 class Event
 {
     /**
+     * @JMS\Type("Webit\GlsTracking\Model\DateTime")
+     * @JMS\SerializedName("Date")
+     *
      * @var DateTime
      */
     private $date;
 
     /**
+     * @JMS\Type("string)
+     * @JMS\SerializedName("LocationCode")
+     *
      * @var string
      */
     private $locationCode;
 
     /**
+     * @JMS\Type("string)
+     * @JMS\SerializedName("LocationName")
+     *
      * @var string
      */
     private $locationName;
 
     /**
+     * @JMS\Type("string)
+     * @JMS\SerializedName("CountryName")
+     *
      * @var string
      */
     private $countryName;
 
     /**
+     * @JMS\Type("string)
+     * @JMS\SerializedName("Code")
+     *
      * @var string
      */
     private $code;
 
     /**
+     * @JMS\Type("string)
+     * @JMS\SerializedName("Desc")
+     *
      * @var string
      */
     private $description;
 
     /**
+     * @JMS\Type("string)
+     * @JMS\SerializedName("ReasonName")
+     *
      * @var string
      */
     private $reasonName;

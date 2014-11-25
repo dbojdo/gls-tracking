@@ -6,7 +6,9 @@
  * Created on Nov 24, 2014, 16:05
  */
 
-namespace Webit\GlsTracking\Model;
+namespace Webit\GlsTracking\Model\Message;
+
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * Class AbstractResponse
@@ -15,6 +17,9 @@ namespace Webit\GlsTracking\Model;
 abstract class AbstractResponse
 {
     /**
+     * @JMS\Type("Webit\GlsTracking\Model\ExitCode")
+     * @JMS\SerializedName("ExitCode")
+     *
      * @var ExitCode
      */
     private $exitCode;

@@ -8,6 +8,8 @@
 
 namespace Webit\GlsTracking\Model;
 
+use JMS\Serializer\Annotation as JMS;
+
 /**
  * Class Parameters
  * @package Webit\GlsTracking\Model
@@ -15,11 +17,19 @@ namespace Webit\GlsTracking\Model;
 class Parameters
 {
     /**
+     * @JMS\Type("string")
+     * @JMS\SerializedName("ParamCode")
+     * @JMS\Groups({"input"})
+     *
      * @var string
      */
     private $code;
 
     /**
+     * @JMS\Type("string")
+     * @JMS\SerializedName("ParamValue")
+     * @JMS\Groups({"input"})
+     *
      * @var string
      */
     private $value;

@@ -8,6 +8,8 @@
 
 namespace Webit\GlsTracking\Model;
 
+use JMS\Serializer\Annotation as JMS;
+
 /**
  * Class ExitCode
  * @package Webit\GlsTracking\Model
@@ -19,11 +21,17 @@ class ExitCode
     const CODE_NO_DATA_FOUND = 998;
 
     /**
+     * @JMS\Type("integer")
+     * @JMS\SerializedName("ErrorCode")
+     *
      * @var int
      */
     private $code;
 
     /**
+     * @JMS\Type("string")
+     * @JMS\SerializedName("ErrorDscr")
+     *
      * @var string
      */
     private $description;

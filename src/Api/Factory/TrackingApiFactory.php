@@ -8,7 +8,9 @@
 
 namespace Webit\GlsTracking\Api\Factory;
 
+use JMS\Serializer\SerializerInterface;
 use Webit\GlsTracking\Api\TrackingApi;
+use Webit\GlsTracking\Model\UserCredentials;
 
 /**
  * Class TrackingApiFactory
@@ -23,9 +25,15 @@ class TrackingApiFactory
      */
     private $clientFactory;
 
-    public function __construct(SoapClientFactory $clientFactory)
+    /**
+     * @var SerializerInterface
+     */
+    private $serializer;
+
+    public function __construct(SoapClientFactory $clientFactory, SerializerInterface $serializer)
     {
         $this->clientFactory = $clientFactory;
+        $this->serializer = $serializer;
     }
 
     /**
@@ -37,8 +45,8 @@ class TrackingApiFactory
     {
         return new TrackingApi(
             $this->clientFactory->createSoapClient(self::GLS_TRACKING_WSDL),
-            $username,
-            $password
+            $this->serializer,
+            new UserCredentials($username, $password)
         );
     }
 }

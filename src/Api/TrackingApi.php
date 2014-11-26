@@ -9,7 +9,6 @@
 namespace Webit\GlsTracking\Api;
 
 use JMS\Serializer\SerializationContext;
-use JMS\Serializer\SerializerInterface;
 use Webit\GlsTracking\Api\Exception\AuthException;
 use Webit\GlsTracking\Api\Exception\Exception;
 use Webit\GlsTracking\Api\Exception\GlsApiCommunicationException;
@@ -27,6 +26,7 @@ use Webit\GlsTracking\Model\Message\TuPODRequest;
 use Webit\GlsTracking\Model\Message\TuPODResponse;
 use Webit\GlsTracking\Model\Parameters;
 use Webit\GlsTracking\Model\UserCredentials;
+use Webit\SoapApi\SoapApiExecutorInterface;
 
 /**
  * Class TrackingApi
@@ -34,15 +34,11 @@ use Webit\GlsTracking\Model\UserCredentials;
  */
 class TrackingApi
 {
-    /**
-     * @var \SoapClient
-     */
-    private $soapClient;
 
     /**
-     * @var SerializerInterface
+     * @var SoapApiExecutorInterface
      */
-    private $serializer;
+    private $executor;
 
     /**
      * @var UserCredentials
@@ -50,14 +46,12 @@ class TrackingApi
     private $credentials;
 
     /**
-     * @param \SoapClient $soapClient
-     * @param SerializerInterface $serializer
+     * @param SoapApiExecutorInterface $executor
      * @param UserCredentials $credentials
      */
-    public function __construct(\SoapClient $soapClient, SerializerInterface $serializer, UserCredentials $credentials)
+    public function __construct(SoapApiExecutorInterface $executor, UserCredentials $credentials)
     {
-        $this->soapClient = $soapClient;
-        $this->serializer = $serializer;
+        $this->executor = $executor;
         $this->credentials = $credentials;
     }
 
@@ -90,8 +84,9 @@ class TrackingApi
      */
     public function getParcelDetails($reference, $language = 'EN')
     {
-        $response = $this->doRequest(
-            'GetTuList',
+        /** @var TuDetailsResponse $response */
+        $response = $this->executor->executeSoapFunction(
+            'GetTuDetails',
             new TuDetailsRequest($reference, new Parameters('LangCode', $language)),
             'Webit\GlsTracking\Model\Message\TuDetailsResponse'
         );
@@ -111,7 +106,8 @@ class TrackingApi
      */
     public function getParcelList(\DateTime $from, \DateTime $to, $reference = null, $customerReference = null, $language = 'EN')
     {
-        $response = $this->doRequest(
+        /** @var TuListResponse $response */
+        $response = $this->executor->executeSoapFunction(
             'GetTuList',
             new TuListRequest(
                 DateTime::fromDateTime($from),
@@ -136,7 +132,7 @@ class TrackingApi
     public function getProofOfDelivery($reference, $language = 'EN')
     {
         /** @var TuPODResponse $response */
-        $response = $this->doRequest(
+        $response = $this->executor->executeSoapFunction(
             'GetTuPOD',
             new TuPODRequest($reference, new Parameters('LangCode', $language)),
             'Webit\GlsTracking\Model\Message\TuPODResponse'

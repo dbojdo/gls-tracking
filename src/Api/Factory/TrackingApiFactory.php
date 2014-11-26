@@ -8,9 +8,14 @@
 
 namespace Webit\GlsTracking\Api\Factory;
 
-use JMS\Serializer\SerializerInterface;
 use Webit\GlsTracking\Api\TrackingApi;
 use Webit\GlsTracking\Model\UserCredentials;
+use Webit\SoapApi\Exception\ExceptionFactoryInterface;
+use Webit\SoapApi\Hydrator\HydratorInterface;
+use Webit\SoapApi\Input\InputNormalizerInterface;
+use Webit\SoapApi\SoapApiExecutor;
+use Webit\SoapApi\SoapApiExecutorInterface;
+use Webit\SoapApi\SoapClient\SoapClientFactoryInterface;
 
 /**
  * Class TrackingApiFactory
@@ -21,19 +26,46 @@ class TrackingApiFactory
     const GLS_TRACKING_WSDL = 'http://www.gls-group.eu/276-I-PORTAL-WEBSERVICE/services/Tracking/wsdl/Tracking.wsdl';
 
     /**
-     * @var SoapClientFactory
+     * @var SoapClientFactoryInterface
      */
     private $clientFactory;
 
     /**
-     * @var SerializerInterface
+     * @var SoapApiExecutorInterface
      */
-    private $serializer;
+    private $executor;
 
-    public function __construct(SoapClientFactory $clientFactory, SerializerInterface $serializer)
-    {
+    /**
+     * @var InputNormalizerInterface
+     */
+    private $normalizer;
+
+    /**
+     * @var HydratorInterface
+     */
+    private $hydrator;
+
+    /**
+     * @var ExceptionFactoryInterface
+     */
+    private $exceptionFactory;
+
+    /**
+     * @param SoapClientFactoryInterface $clientFactory
+     * @param InputNormalizerInterface $normalizer
+     * @param HydratorInterface $hydrator
+     * @param ExceptionFactoryInterface $exceptionFactory
+     */
+    public function __construct(
+        SoapClientFactoryInterface $clientFactory,
+        InputNormalizerInterface $normalizer,
+        HydratorInterface $hydrator,
+        ExceptionFactoryInterface $exceptionFactory
+    ) {
         $this->clientFactory = $clientFactory;
-        $this->serializer = $serializer;
+        $this->normalizer = $normalizer;
+        $this->hydrator = $hydrator;
+        $this->exceptionFactory = $exceptionFactory;
     }
 
     /**
@@ -43,10 +75,24 @@ class TrackingApiFactory
      */
     public function createTrackingApi($username, $password)
     {
+        $executor = $this->createExecutor();
         return new TrackingApi(
-            $this->clientFactory->createSoapClient(self::GLS_TRACKING_WSDL),
-            $this->serializer,
+            $executor,
             new UserCredentials($username, $password)
+        );
+    }
+
+    /**
+     * @return SoapApiExecutor
+     */
+    private function createExecutor()
+    {
+        return new SoapApiExecutor(
+            $this->clientFactory->createSoapClient(self::GLS_TRACKING_WSDL),
+            $this->normalizer,
+            $this->hydrator,
+            null,
+            $this->exceptionFactory
         );
     }
 }

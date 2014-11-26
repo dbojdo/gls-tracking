@@ -58,20 +58,11 @@ class TrackingApi
     private function doRequest($soapFunction, AbstractRequest $request, $outputType = 'ArrayCollection')
     {
         $this->applyCredentials($request);
-        try {
-            $input = $this->normalizeInput($request);
 
-            $response = $this->soapClient->__soapCall($soapFunction, $input);
-            $response = json_encode($response);
+        $request = array($soapFunction => $request);
 
-            /** @var AbstractResponse $response */
-            $response = $this->serializer->deserialize($response, $outputType, 'json');
-        } catch (\SoapFault $e) {
-            throw new GlsApiCommunicationException("SOAP Error: " . $e->faultcode, null, $e);
-        } catch (\Exception $e) {
-            throw new Exception($e->getMessage(), $e->getCode(), $e);
-        }
-
+        /** @var AbstractRequest $response */
+        $response = $this->executor->executeSoapFunction($soapFunction, $request, $outputType);
         if ($response->getExitCode()->isSuccessfully() == false) {
             throw $this->createException($response->getExitCode());
         }
@@ -85,8 +76,8 @@ class TrackingApi
     public function getParcelDetails($reference, $language = 'EN')
     {
         /** @var TuDetailsResponse $response */
-        $response = $this->executor->executeSoapFunction(
-            'GetTuDetails',
+        $response = $this->doRequest(
+            'GetTuDetail',
             new TuDetailsRequest($reference, new Parameters('LangCode', $language)),
             'Webit\GlsTracking\Model\Message\TuDetailsResponse'
         );
@@ -107,7 +98,7 @@ class TrackingApi
     public function getParcelList(\DateTime $from, \DateTime $to, $reference = null, $customerReference = null, $language = 'EN')
     {
         /** @var TuListResponse $response */
-        $response = $this->executor->executeSoapFunction(
+        $response = $this->doRequest(
             'GetTuList',
             new TuListRequest(
                 DateTime::fromDateTime($from),
@@ -132,7 +123,7 @@ class TrackingApi
     public function getProofOfDelivery($reference, $language = 'EN')
     {
         /** @var TuPODResponse $response */
-        $response = $this->executor->executeSoapFunction(
+        $response = $this->doRequest(
             'GetTuPOD',
             new TuPODRequest($reference, new Parameters('LangCode', $language)),
             'Webit\GlsTracking\Model\Message\TuPODResponse'
@@ -147,21 +138,6 @@ class TrackingApi
     private function applyCredentials(AbstractRequest $request)
     {
         $request->setCredentials($this->credentials);
-    }
-
-    /**
-     * @param AbstractRequest $request
-     * @return array
-     */
-    private function normalizeInput(AbstractRequest $request)
-    {
-        $context = SerializationContext::create()->setGroups(array('input'));
-        $input = $this->serializer->serialize($request, 'json', $context);
-        $input = $this->serializer->deserialize($input, 'array', 'json');
-
-        $refClass = new \ReflectionClass($request);
-
-        return array($refClass->getName() => $input);
     }
 
     /**

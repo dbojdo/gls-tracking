@@ -12,6 +12,4 @@ namespace Webit\GlsTracking\Api\Exception;
  */
 class GlsApiCommunicationException extends \RuntimeException implements GlsTrackingApiException
 {
-
 }
- 

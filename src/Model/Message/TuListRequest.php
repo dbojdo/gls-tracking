@@ -28,7 +28,6 @@ class TuListRequest extends AbstractRequest
     /**
      * @JMS\Type("Webit\GlsTracking\Model\DateTime")
      * @JMS\SerializedName("DateFrom")
-     * @JMS\Groups({"input"})
      *
      * @var DateTime
      */
@@ -37,7 +36,6 @@ class TuListRequest extends AbstractRequest
     /**
      * @JMS\Type("Webit\GlsTracking\Model\DateTime")
      * @JMS\SerializedName("DateTo")
-     * @JMS\Groups({"input"})
      *
      * @var DateTime
      */

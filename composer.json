@@ -2,6 +2,7 @@
     "name" : "webit/gls-tracking",
     "type" : "library",
     "description": "Web-IT GLS Tracking API",
+    "keywords": ["gls", "tracking", "track", "trace", "parcel"]
     "authors": [
         {
             "name": "Daniel Bojdo",

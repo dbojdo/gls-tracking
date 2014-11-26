@@ -31,11 +31,6 @@ class TrackingApiFactory
     private $clientFactory;
 
     /**
-     * @var SoapApiExecutorInterface
-     */
-    private $executor;
-
-    /**
      * @var InputNormalizerInterface
      */
     private $normalizer;
@@ -76,6 +71,7 @@ class TrackingApiFactory
     public function createTrackingApi($username, $password)
     {
         $executor = $this->createExecutor();
+
         return new TrackingApi(
             $executor,
             new UserCredentials($username, $password)

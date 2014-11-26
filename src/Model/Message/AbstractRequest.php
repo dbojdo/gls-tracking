@@ -19,7 +19,6 @@ abstract class AbstractRequest
     /**
      * @JMS\Type("Webit\GlsTracking\Model\UserCredentials")
      * @JMS\SerializedName("Credentials")
-     * @JMS\Groups({"input"})
      *
      * @var UserCredentials
      */
@@ -28,7 +27,6 @@ abstract class AbstractRequest
     /**
      * @JMS\Type("string")
      * @JMS\SerializedName("RefValue")
-     * @JMS\Groups({"input"})
      *
      * @var string
      */

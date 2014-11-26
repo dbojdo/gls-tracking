@@ -29,7 +29,7 @@ class ExceptionFactory implements ExceptionFactoryInterface
     {
         switch (true) {
             case $e instanceof \SoapFault:
-                return new GlsApiCommunicationException("SOAP Error: " . $e->faultcode, null, $e);
+                return new GlsApiCommunicationException(sprintf("SOAP Error: %s (%s)", $e->getMessage(), $e->faultcode));
         }
 
         return new Exception($e->getMessage(), $e->getCode(), $e);

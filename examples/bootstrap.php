@@ -14,6 +14,12 @@ AnnotationRegistry::registerAutoloadNamespace(
     __DIR__.'/../vendor/jms/serializer/src'
 );
 
+if (is_file(__DIR__ .'/config.php') == false) {
+    throw new \LogicException('Missing required file "examples/config.php". Create it base on "examples/onfig.php.dist".');
+}
+
+$config = require __DIR__ .'/config.php';
+
 $serializer = SerializerBuilder::create()->build();
 
 $clientFactory = new SoapClientFactory();

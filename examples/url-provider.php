@@ -1,15 +1,16 @@
 <?php
-require __DIR__.'/../vendor/autoload.php';
+require __DIR__.'/bootstrap.php';
 
 use Webit\GlsTracking\UrlProvider\TrackingUrlProviderFactory;
 $factory = new TrackingUrlProviderFactory();
 
+/** @var array $config */
+
 $username = 'username';
-$password = 'password';
 
-$urlProvider = $factory->createTrackingUrlProvider($username, $password);
+$urlProvider = $factory->createTrackingUrlProvider($config['username'], $config['password']);
 
-$reference = 'reference-no';
+$reference = $config['parcel-no'];
 $url = $urlProvider->getTrackingUrl($reference);
 
 printf("Url for tracking \"%s\": %s\n", $reference, $url);

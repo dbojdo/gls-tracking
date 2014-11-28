@@ -66,6 +66,8 @@ class TrackingApi
         if ($response->getExitCode()->isSuccessfully() == false) {
             throw $this->createException($response->getExitCode());
         }
+
+        return $response;
     }
 
     /**

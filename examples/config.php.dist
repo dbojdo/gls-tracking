@@ -1,0 +1,8 @@
+<?php
+return array(
+    'username' => 'username',
+    'password' => 'password',
+    'parcel-no' => 'parcel-no',
+    'customer-no' => 'customer-no',
+    'customer-ref-no' => 'customer-ref-no'
+);

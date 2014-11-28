@@ -182,4 +182,12 @@ class DateTime
             (int) $dateTime->format('i')
         );
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getDateTime()->format('Y-m-d H:i');
+    }
 }

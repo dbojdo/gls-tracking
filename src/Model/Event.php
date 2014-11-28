@@ -25,7 +25,7 @@ class Event
     private $date;
 
     /**
-     * @JMS\Type("string)
+     * @JMS\Type("string")
      * @JMS\SerializedName("LocationCode")
      *
      * @var string
@@ -33,7 +33,7 @@ class Event
     private $locationCode;
 
     /**
-     * @JMS\Type("string)
+     * @JMS\Type("string")
      * @JMS\SerializedName("LocationName")
      *
      * @var string
@@ -41,7 +41,7 @@ class Event
     private $locationName;
 
     /**
-     * @JMS\Type("string)
+     * @JMS\Type("string")
      * @JMS\SerializedName("CountryName")
      *
      * @var string
@@ -49,7 +49,7 @@ class Event
     private $countryName;
 
     /**
-     * @JMS\Type("string)
+     * @JMS\Type("string")
      * @JMS\SerializedName("Code")
      *
      * @var string
@@ -57,7 +57,7 @@ class Event
     private $code;
 
     /**
-     * @JMS\Type("string)
+     * @JMS\Type("string")
      * @JMS\SerializedName("Desc")
      *
      * @var string
@@ -65,7 +65,7 @@ class Event
     private $description;
 
     /**
-     * @JMS\Type("string)
+     * @JMS\Type("string")
      * @JMS\SerializedName("ReasonName")
      *
      * @var string

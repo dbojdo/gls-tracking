@@ -83,7 +83,7 @@ class TuDetailsResponse extends AbstractResponse
     private $product;
 
     /**
-     * @JMS\Type("ArrayCollection<string>")
+     * @JMS\Type("string")
      * @JMS\SerializedName("Services")
      *
      * @var ArrayCollection

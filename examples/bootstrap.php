@@ -8,7 +8,7 @@ use Webit\GlsTracking\Api\Factory\TrackingApiFactory;
 use Webit\SoapApi\Input\InputNormalizerSerializedBased;
 use Webit\SoapApi\Hydrator\HydratorSerializer;
 use Webit\GlsTracking\Api\Exception\ExceptionFactory;
-
+use Webit\SoapApi\Util\BinaryStringHelper;
 AnnotationRegistry::registerAutoloadNamespace(
     'JMS\Serializer\Annotation',
     __DIR__.'/../vendor/jms/serializer/src'
@@ -24,7 +24,7 @@ $serializer = SerializerBuilder::create()->build();
 
 $clientFactory = new SoapClientFactory();
 $normalizer = new InputNormalizerSerializedBased($serializer);
-$hydrator = new HydratorSerializer($serializer);
+$hydrator = new HydratorSerializer($serializer, new BinaryStringHelper());
 $exceptionFactory = new ExceptionFactory();
 
 $apiFactory = new TrackingApiFactory($clientFactory, $normalizer, $hydrator, $exceptionFactory);

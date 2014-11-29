@@ -23,3 +23,6 @@ foreach ($details->getHistory() as $event) {
     );
 }
 printf("Received by: %s\n", $details->getSignature());
+
+$pod = $api->getProofOfDelivery($parcelNo);
+printf("Proof of delivery filename: %s\n", $pod->getFileName());

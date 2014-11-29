@@ -6,6 +6,8 @@
  
 namespace Webit\GlsTracking\Model\Message;
 
+use JMS\Serializer\Annotation as JMS;
+
 /**
  * Class TuPODResponse
  * @author Daniel Bojdo <daniel.bojdo@web-it.eu>
@@ -13,11 +15,15 @@ namespace Webit\GlsTracking\Model\Message;
 class TuPODResponse extends AbstractResponse
 {
     /**
+     * @JMS\Type("string")
+     * @JMS\SerializedName("PODFile")
      * @var string
      */
     private $file;
 
     /**
+     * @JMS\Type("string")
+     * @JMS\SerializedName("PODFileName")
      * @var string
      */
     private $fileName;

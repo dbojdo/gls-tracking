@@ -40,6 +40,8 @@ class TrackingUrlProvider
     {
         // or just: https://gls-group.eu/EU/en/parcel-tracking?match=$reference
 
+        $reference = $this->filterReferenceNo($reference);
+
         $params = array();
         $params[] = 'un=' . urlencode($this->username);
         $params[] = 'rf=' . urlencode($reference);
@@ -75,5 +77,14 @@ class TrackingUrlProvider
         $str = sprintf('%s%s%s%s%s', $this->username, $reference, $customerReference, $customerNo, $this->password);
 
         return md5($str);
+    }
+
+    /**
+     * @param string $referenceNo
+     * @return string
+     */
+    private function filterReferenceNo($referenceNo)
+    {
+        return substr($referenceNo, 0, 11);
     }
 }

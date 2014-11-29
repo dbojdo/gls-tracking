@@ -80,7 +80,7 @@ class TrackingApi
         /** @var TuDetailsResponse $response */
         $response = $this->doRequest(
             'GetTuDetail',
-            new TuDetailsRequest($reference, new Parameters('LangCode', $language)),
+            new TuDetailsRequest($this->filterReferenceNo($reference), new Parameters('LangCode', $language)),
             'Webit\GlsTracking\Model\Message\TuDetailsResponse'
         );
 
@@ -105,7 +105,7 @@ class TrackingApi
             new TuListRequest(
                 DateTime::fromDateTime($from),
                 DateTime::fromDateTime($to),
-                $reference,
+                $reference ? $this->filterReferenceNo($reference) : null,
                 $customerReference,
                 new Parameters('LangCode', $language)
             ),
@@ -124,10 +124,11 @@ class TrackingApi
      */
     public function getProofOfDelivery($reference, $language = 'EN')
     {
+
         /** @var TuPODResponse $response */
         $response = $this->doRequest(
             'GetTuPOD',
-            new TuPODRequest($reference, new Parameters('LangCode', $language)),
+            new TuPODRequest($this->filterReferenceNo($reference), new Parameters('LangCode', $language)),
             'Webit\GlsTracking\Model\Message\TuPODResponse'
         );
 
@@ -158,5 +159,14 @@ class TrackingApi
         return new UnknownErrorCodeException(sprintf(
             'Unknown error given with code "%s" and message "%s"', $exitCode->getCode(), $exitCode->getDescription()
         ));
+    }
+
+    /**
+     * @param string $referenceNo
+     * @return string
+     */
+    private function filterReferenceNo($referenceNo)
+    {
+        return substr($referenceNo, 0, 11);
     }
 }

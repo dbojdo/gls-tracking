@@ -5,10 +5,11 @@ use Doctrine\Common\Annotations\AnnotationRegistry;
 use JMS\Serializer\SerializerBuilder;
 use Webit\SoapApi\SoapClient\SoapClientFactory;
 use Webit\GlsTracking\Api\Factory\TrackingApiFactory;
-use Webit\SoapApi\Input\InputNormalizerSerializedBased;
-use Webit\SoapApi\Hydrator\HydratorSerializer;
+use Webit\SoapApi\Input\InputNormalizerSerializerBased;
+use Webit\SoapApi\Hydrator\HydratorSerializerBased;
 use Webit\GlsTracking\Api\Exception\ExceptionFactory;
 use Webit\SoapApi\Util\BinaryStringHelper;
+use Webit\SoapApi\SoapApiExecutorFactory;
 AnnotationRegistry::registerAutoloadNamespace(
     'JMS\Serializer\Annotation',
     __DIR__.'/../vendor/jms/serializer/src'
@@ -25,10 +26,11 @@ $config = require __DIR__ .'/config.php';
 $serializer = SerializerBuilder::create()->build();
 
 $clientFactory = new SoapClientFactory();
-$normalizer = new InputNormalizerSerializedBased($serializer);
-$hydrator = new HydratorSerializer($serializer, new BinaryStringHelper());
+$executorFactory = new SoapApiExecutorFactory();
+$normalizer = new InputNormalizerSerializerBased($serializer);
+$hydrator = new HydratorSerializerBased($serializer, new BinaryStringHelper());
 $exceptionFactory = new ExceptionFactory();
 
-$apiFactory = new TrackingApiFactory($clientFactory, $normalizer, $hydrator, $exceptionFactory);
+$apiFactory = new TrackingApiFactory($clientFactory, $executorFactory, $normalizer, $hydrator, $exceptionFactory);
 
 return $apiFactory;

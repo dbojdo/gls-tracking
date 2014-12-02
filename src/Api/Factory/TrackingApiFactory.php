@@ -14,6 +14,7 @@ use Webit\SoapApi\Exception\ExceptionFactoryInterface;
 use Webit\SoapApi\Hydrator\HydratorInterface;
 use Webit\SoapApi\Input\InputNormalizerInterface;
 use Webit\SoapApi\SoapApiExecutor;
+use Webit\SoapApi\SoapApiExecutorFactory;
 use Webit\SoapApi\SoapApiExecutorInterface;
 use Webit\SoapApi\SoapClient\SoapClientFactoryInterface;
 
@@ -31,6 +32,11 @@ class TrackingApiFactory
     private $clientFactory;
 
     /**
+     * @var SoapApiExecutorFactory
+     */
+    private $executorFactory;
+
+    /**
      * @var InputNormalizerInterface
      */
     private $normalizer;
@@ -46,18 +52,26 @@ class TrackingApiFactory
     private $exceptionFactory;
 
     /**
+     * @var SoapApiExecutorInterface
+     */
+    private $executor;
+
+    /**
      * @param SoapClientFactoryInterface $clientFactory
+     * @param SoapApiExecutorFactory $executorFactory
      * @param InputNormalizerInterface $normalizer
      * @param HydratorInterface $hydrator
      * @param ExceptionFactoryInterface $exceptionFactory
      */
     public function __construct(
         SoapClientFactoryInterface $clientFactory,
+        SoapApiExecutorFactory $executorFactory,
         InputNormalizerInterface $normalizer,
         HydratorInterface $hydrator,
         ExceptionFactoryInterface $exceptionFactory
     ) {
         $this->clientFactory = $clientFactory;
+        $this->executorFactory = $executorFactory;
         $this->normalizer = $normalizer;
         $this->hydrator = $hydrator;
         $this->exceptionFactory = $exceptionFactory;
@@ -70,10 +84,8 @@ class TrackingApiFactory
      */
     public function createTrackingApi($username, $password)
     {
-        $executor = $this->createExecutor();
-
         return new TrackingApi(
-            $executor,
+            $this->getExecutor(),
             new UserCredentials($username, $password)
         );
     }
@@ -81,14 +93,18 @@ class TrackingApiFactory
     /**
      * @return SoapApiExecutor
      */
-    private function createExecutor()
+    private function getExecutor()
     {
-        return new SoapApiExecutor(
-            $this->clientFactory->createSoapClient(self::GLS_TRACKING_WSDL),
-            $this->normalizer,
-            $this->hydrator,
-            null,
-            $this->exceptionFactory
-        );
+        if ($this->executor == null) {
+            $this->executor = $this->executorFactory->createExecutor(
+                $this->clientFactory->createSoapClient(self::GLS_TRACKING_WSDL),
+                $this->normalizer,
+                $this->hydrator,
+                null,
+                $this->exceptionFactory
+            );
+        }
+
+        return $this->executor;
     }
 }

@@ -8,7 +8,7 @@ $factory = new TrackingUrlProviderFactory();
 
 $username = 'username';
 
-$urlProvider = $factory->createTrackingUrlProvider($config['username'], $config['password']);
+$urlProvider = $factory->createTrackingUrlProvider();
 
 $reference = $config['parcel-no'];
 $url = $urlProvider->getTrackingUrl($reference);

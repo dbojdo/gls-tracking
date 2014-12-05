@@ -17,6 +17,6 @@ interface TrackingUrlProviderFactoryInterface
      * @param string $password
      * @return TrackingUrlProvider
      */
-    public function createTrackingUrlProvider($username, $password);
+    public function createTrackingUrlProvider();
 }
  

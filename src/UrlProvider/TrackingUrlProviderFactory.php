@@ -13,12 +13,10 @@ namespace Webit\GlsTracking\UrlProvider;
 class TrackingUrlProviderFactory implements TrackingUrlProviderFactoryInterface
 {
     /**
-     * @param string $username
-     * @param string $password
      * @return TrackingUrlProvider
      */
-    public function createTrackingUrlProvider($username, $password)
+    public function createTrackingUrlProvider()
     {
-        return new TrackingUrlProvider($username, $password);
+        return new TrackingUrlProvider();
     }
 }

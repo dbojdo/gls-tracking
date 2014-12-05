@@ -1,0 +1,291 @@
+Status;St.koñcowy;Opis
+1;N;Odbior u nadawcy
+2;N;Wejscie APL
+3;N;Zmiana kodu CE
+4;N;Skan kontrolny KK
+5;N;Dane od KK otrzymane
+6;N;Sort. wstepne MP
+10;N;Dane paczki recznie
+11;N;Wprowadzenie Pickup
+12;N;#Location liability
+14;N;Opakowanie zabezpieczone
+15;N;Paczka miedzynarodowa
+16;N;Reczne wprowadzenie danyc
+20;N;Wyjscie do 'KURIER'
+21;N;Wejscie 'KURIER'
+30;N;Zmagaz. brak dok. cel.
+31;N;Wyjscie paczki celnej
+40;N;#External Forwarder
+50;N;Paczka zatrzymana w mag.
+51;N;Zwolnienie paczki zatrzym
+811;N;Wejscie APL-'KURIER'
+1001;N;Przejscie HUB NORMAL
+1002;N;Przejscie HUB MP
+1003;N;Przejscie HUB NTT
+1004;N;Skan awaryjny
+1005;N;Przejscie HUB NO_READ
+1006;N;Sort. wstepne MP
+1007;N;Przejscie RHUB
+1008;N;Renumeracja paczki
+1009;N;Przejscie HUB KK
+1010;N;Wyjscie z HUB do 'KURIER'
+1011;N;Wejscie HUB-Kurier
+1012;N;Zwr: 'KURIER'-zwrot
+1013;N;Wyjscie transp. lotniczy
+1020;N;NIF-wejscie
+1021;N;HUB-wejscie
+1022;N;HUB-wyjscie
+1023;N;NIF-wyjscie
+1024;Y;Posort. na zly kraj
+1025;N;Przekazane do innego syst
+1027;N;Uszkodzona na wejsciu HUB
+1028;N;Paczka w magazynie HUB
+1029;N;Przejscie HUB KK MP
+1030;N;Tranzyt
+1039;N;Przejscie HUB KK NTT
+1101;N;Paczka uszkodz. na wej.
+1102;N;Paczka zniszcz. na wej.
+1106;N;Silnie zabrudzona/Sprawca
+1107;N;Silnie zabrudzona
+1110;N;Zwr:Brak zawartosci
+1111;N;Zwr:Brak czesci zawart.
+1112;N;Zwr: Wyciek
+1113;N;Zwr:Niewlasciwe opak.
+1114;N;Zwr:Brak naklejki kier.
+1115;N;Paczka zutylizowana
+1117;N;Zwr: Niezgodna. z regul.
+1118;N;Uszkodzona w sortowni
+2001;N;Wejscie EPL
+2002;N;Skan prewencyjny
+2003;N;Brak/blad danych
+2005;N;Paczka w magazynie
+2006;N;Paczka zmagazynowana
+2007;N;Wejscie Satellitendepot
+2010;N;W doreczeniu
+2011;Y;Doreczona
+2012;Y;Doreczona w innej filii
+2013;N;Brak awizacji
+2015;N;Doreczona - Parcel Shop
+2016;N;Doreczona na poczcie
+2017;N;Ustalony termin dostawy
+2020;N;Paczka bez danych EDI
+2021;N;Dane bez paczki
+2030;N;Paczka Ident Service
+2031;N;Paczka powr. Ident Serv.
+2100;N;Uszkodz. wejscie EPL/HUB
+2102;N;Zniszczona na wejsciu EPL
+2103;N;Uszkodzona przez kuriera
+2104;N;Zniszczona przez kuriera
+2106;Y;Paczka zagubiona
+2107;N;Czesc. okradziona na wej.
+2108;N;Czesc. okradz. u kuriera
+2109;N;Korekta raportu do weryf.
+2110;Y;Paczka zutylizowana
+2111;N;Uszkodz. w depot
+2112;Y;Reklamacja (roszczenie)
+2113;Y;Uszkodz. zwrot od HVS
+2114;Y;Exchange bez zawartosci
+2115;Y;Szkoda zbiorcza
+2200;N;Nie zostanie dorecz.
+2202;N;Uzgodniony term. dostawy
+2203;Y;Zle sortowana
+2204;Y;Zle kodowana
+2205;Y;Przekierowanie
+2232;N;PS Odmowa przyjecia uszk.
+2233;N;Odmowa przyjecia przez PS
+2234;N;PS Po terminie mag.
+2235;N;Zmiana Parcel Shop
+2236;N;Bledne uzycie statusu
+2237;N;PS Odmowa odbiorca
+2240;N;Brak kontroli dokumentu I
+2241;N;#correct PIN entered
+2242;N;#wrong PIN entered
+2243;N;#Wrong date of birth
+2244;N;#PIN Error
+2245;N;Brak mozliwosci dostawy
+2246;N;Identyfikacja niemozliwa
+2247;N;Brak towaru do wymiany EX
+2248;N;Brak dokumentow ID/DOR
+2249;N;Brak gotowki
+2250;N;Ponowne doreczenie
+2251;N;Przerwa urlopowa
+2252;N;Odbiorca nieobecny
+2253;N;Koniec przyjm. towaru
+2254;N;Sortowana na zla trase
+2255;N;Brak proby doreczenia
+2256;N;Zly adres
+2257;N;Odb. nie przyjmuje towaru
+2258;N;Odbior wlasny
+2259;N;Przesylka niekompletna
+2260;N;Przekaz. Fala1->Fala2
+2261;N;Przekaz. Fala2->Fala1
+2262;N;Trzecie dorecz. - platne
+2263;N;Brak osoby upowaznionej
+2268;N;Paczka nienormatywna
+2269;N;Awizo pozostawione
+2270;N;Awizo - ref. usunieta
+2273;N;Zly adres - USPS
+2300;N;Odmowa - brak dokumentow
+2303;Y;Odmowa - uszkodzona
+2304;Y;Odmowa
+2404;Y;Zwrot do nadawcy
+2501;N;Paczka wyjasniana
+2502;N;Ponowne pozysk. podpisu
+2503;N;Wyskanowanie z LD
+2600;N;Brak miejsca
+2800;N;Brakujace/bledne dok. cel
+2801;N;Eksport/odprawa celna
+2802;N;Brak danych celnych
+2803;N;Paczka zatrzymana
+2804;N;Paczka zwoln. Przez UC
+2805;N;Przsylka zablokowana UC
+2806;N;Brak upowazn. do oclenia
+2807;N;Paczka w urzedzie celnym
+2808;N;Paczka wojskowa
+2809;N;Brak kontaktu z odbiorca
+2810;N;Paczka/dok przek. do UC
+2811;N;Zwrot do NIF
+2812;N;Zabroniony towar
+2813;N;Wyjasnianie adresu
+2814;N;Konfiskata przez UC
+2815;N;Zwrot przez UC
+2816;N;Rewizja celna
+2817;N;Paczka w mag. Agent Celny
+2818;N;Nieuregul. nalezn. celne
+2819;N;Odm. zaplaty nalezn. celn
+2820;N;Przesylka celna niekompl.
+2821;N;Zniszcz. przez Urzad Celn
+2900;Y;Odebrana (skaner)
+2901;Y;P&R/P&S: Wejscie APL
+2902;Y;Druk naklejki adresowej
+2903;N;Referencja
+2911;Y;Urlop
+2912;Y;Odbiorca nieobecny
+2913;Y;Sortowana na zla trase
+2914;Y;Koniec przyjm. towaru
+2915;Y;Brak proby odbioru
+2918;Y;Zly adres
+2933;Y;Zniszczona przez kuriera
+2934;Y;Paczka zagubiona
+2939;Y;Zniszczona w depot
+2950;Y;Klient niepoinformowany
+2951;Y;Przesylka niezapakowana
+2952;Y;Przesylka nienormatywna
+2953;Y;Brak przesylki
+2954;Y;Przesylka wyslana inaczej
+2955;Y;Dorecz. EXC bez wymiany
+2956;Y;Tylko numer paczki
+2957;Y;Paczka zwr. EXC-Service
+2958;Y;Brak mozliwosci dostawy
+3000;N;Wiadomosc
+3010;Y;Paczka anulowana
+3100;N;Dane COD bez skanu wej.
+3101;N;Wejscie zaplaty
+3102;N;Przekaz COD do klienta
+3103;N;Roznice w kwotach
+3104;N;Zmiana danych bankowych
+3105;N;Konto zablokowane
+3106;N;Konto reaktywowane
+3107;N;Zmiana kwoty HQ
+3108;N;Zmiana kwoty EXW
+3110;N;Zwolniona do zmiany COD
+3111;N;Paczka COD zablokowana
+3112;N;Zmiana COD przeprowadz.
+3113;N;DOR - zle sortowany
+3114;N;DOR APL - wejscie
+3115;N;DOR APL  - wyjscie
+3116;N;DOR APL - blad
+3117;N;DOR - powiazanie
+3118;N;DOR EPL - wejscie
+3119;N;DOR EPL - wyjscie
+3120;N;Polecenie przelewu (SAP)
+3121;N;Czek Sprawdzony
+3122;N;Czek Otrzymany
+3123;N;Zmiana serwisu
+3124;N;#Verrechnung
+4211;N;#no coll vacation
+4212;N;#no coll not in/bus. clos
+4213;N;#no coll wrong sorted
+4214;N;#no coll shippers bus. cl
+4215;N;#no coll not attempted
+4218;N;#no coll address incorrec
+4245;N;#no coll no road access p
+4251;N;#no coll parcel not ready
+4252;N;#no coll excl.GLS Terms/C
+4253;N;#no coll no pcl. to picku
+4257;N;#no coll goods issue clos
+4501;N;#Disp: del. on defined da
+4502;N;#Disp: deposit allowed
+4503;N;#Disp: del. on new addres
+4504;N;#Disp: del. in Parcel Sho
+4505;N;#Disp: consignee PU
+4506;N;#Disp: refused
+4507;N;#Delivery in the evening
+4508;N;#Delivery on Saturday
+8000;N;Region: Rejestracja rekla
+8001;N;Rejestracja reklamacji
+8002;N;Druk wzoru koresp. nr 02
+8003;N;Druk wzoru koresp. nr 03
+8004;N;Druk wzoru koresp. nr 04
+8005;N;Druk wzoru koresp. nr 05
+8006;N;Druk wzoru koresp. nr 06
+8007;N;Druk wzoru koresp. nr 07
+8008;N;Druk wzoru koresp. nr 08
+8009;N;Druk wzoru koresp. nr 09
+8010;N;Druk wzoru koresp. nr 10
+8011;N;Druk wzoru koresp. nr 11
+8012;N;Druk wzoru koresp. nr 12
+8013;N;Druk wzoru koresp. nr 13
+8014;N;Druk wzoru koresp. nr 14
+8015;N;Druk wzoru koresp. nr 15
+8016;N;Druk wzoru koresp. nr 16
+8017;N;Druk wzoru koresp. nr 17
+8018;N;Druk wzoru koresp. nr 18
+8019;N;Druk wzoru koresp. nr 19
+8020;N;Druk wzoru koresp. nr 20
+8021;N;Druk wzoru koresp. nr 21
+8022;N;Druk wzoru koresp. nr 22
+8023;N;Druk wzoru koresp. nr 23
+8024;N;Druk wzoru koresp. nr 24
+8025;N;Druk wzoru koresp. nr 25
+8026;N;Druk wzoru koresp. nr 26
+8027;N;Druk wzoru koresp. nr 27
+8028;N;Druk wzoru koresp. nr 28
+8029;N;Druk wzoru koresp. nr 30
+8030;N;Druk wzoru koresp. nr 31
+8031;N;Druk wzoru koresp. nr 32
+8032;N;Druk wzoru koresp. nr 33
+8033;N;Druk wzoru koresp. nr 34
+8034;N;Druk wzoru koresp. nr 35
+8035;N;Druk wzoru koresp. nr 35
+8036;N;Druk wzoru koresp. nr 36
+8037;N;Druk wzoru koresp. nr 37
+8038;N;Druk wzoru koresp. nr 38
+8039;N;Druk wzoru koresp. nr 39
+8040;N;Druk wzoru koresp. nr 40
+8041;N;Druk wzoru koresp. nr 41
+8042;N;Druk wzoru koresp. nr 42
+8043;N;Druk wzoru koresp. nr 43
+8090;N;Rejestracja zakonczona
+8091;N;Ponowne otwarcie akt
+8092;N;Rejestracja otwarta
+8093;N;Zablokowanie Akt
+8100;N;Zmiana SP
+8101;N;Zmiana sprawcy
+8102;N;Zmiana kwoty uznania
+8150;N;Zgloszone do ubezp.
+8200;N;Wejscie
+8201;N;Spor prawny
+8202;N;Odrzucone
+8203;N;Zakoncz. bez wyplaty
+8204;N;Zwolnione do czesc. wypla
+8205;N;Zwolnione do wyplaty
+8206;N;Niekompletne
+8300;N;Uregulowane wewnetrznie
+8301;N;Akta zamkniete
+8302;N;Zwolmienie wyplaty
+8400;N;Zlecenie wyplaty przez FI
+8401;N;Wyplata FIBU
+8402;N;Rozliczenie FIBU
+8403;N;Zlecenie wyplaty (FIBU) n
+8404;N;Zakonczone bez inf. SAP

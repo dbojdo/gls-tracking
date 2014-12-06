@@ -10,7 +10,7 @@ namespace Webit\GlsTracking\UrlProvider;
  * Class TrackingUrlProviderFactory
  * @author Daniel Bojdo <daniel.bojdo@web-it.eu>
  */
-class TrackingUrlProviderFactory implements TrackingUrlProviderFactoryInterface
+class TrackingUrlProviderFactory
 {
     /**
      * @return TrackingUrlProvider

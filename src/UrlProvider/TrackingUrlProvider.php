@@ -8,6 +8,8 @@
 
 namespace Webit\GlsTracking\UrlProvider;
 
+use Webit\GlsTracking\Model\UserCredentials;
+
 /**
  * Class TrackingUrlProvider
  * @package Webit\GlsTracking\UrlProvider
@@ -40,21 +42,20 @@ class TrackingUrlProvider
     }
 
     /**
-     * @param string $username
-     * @param string $password
+     * @param UserCredentials $credentials
      * @param string $reference
      * @param string $language
      * @return string
      */
-    public function getEncryptedTrackingUrl($username, $password, $reference, $language = 'EN')
+    public function getEncryptedTrackingUrl(UserCredentials $credentials, $reference, $language = 'EN')
     {
         $reference = $this->filterReferenceNo($reference);
 
         $params = array();
-        $params[] = 'un=' . urlencode($username);
+        $params[] = 'un=' . urlencode($credentials->getUsername());
         $params[] = 'rf=' . urlencode($reference);
         $params[] = 'lc=' . urlencode($language);
-        $params[] = 'key='. $this->calculateKey($username, $password, $reference, null, null);
+        $params[] = 'key='. $this->calculateKey($credentials, $reference, null, null);
 
         $queryString = implode('&', $params);
 
@@ -62,21 +63,20 @@ class TrackingUrlProvider
     }
 
     /**
-     * @param string $username
-     * @param string $password
+     * @param UserCredentials $credentials
      * @param $customerReference
      * @param $customerNo
      * @param string $language
      * @return string
      */
-    public function getEncryptedCustomerReferenceTrackingUrl($username, $password, $customerReference, $customerNo, $language = 'EN')
+    public function getEncryptedCustomerReferenceTrackingUrl(UserCredentials $credentials, $customerReference, $customerNo, $language = 'EN')
     {
         $params = array();
-        $params[] = 'un=' . urlencode($username);
+        $params[] = 'un=' . urlencode($credentials->getUsername());
         $params[] = 'crf=' . urlencode($customerReference);
         $params[] = 'no=' . urlencode($customerNo);
         $params[] = 'lc=' . urlencode($language);
-        $params[] = 'key='. $this->calculateKey($username, $password, null, $customerReference, $customerNo);
+        $params[] = 'key='. $this->calculateKey($credentials, null, $customerReference, $customerNo);
 
         $queryString = implode('&', $params);
 
@@ -84,16 +84,22 @@ class TrackingUrlProvider
     }
 
     /**
-     * @param string $username
-     * @param string $password
+     * @param UserCredentials $credentials
      * @param string $reference
      * @param string $customerReference
      * @param string $customerNo
      * @return string
      */
-    private function calculateKey($username, $password, $reference, $customerReference, $customerNo)
+    private function calculateKey(UserCredentials $credentials, $reference, $customerReference, $customerNo)
     {
-        $str = sprintf('%s%s%s%s%s', $username, $reference, $customerReference, $customerNo, $password);
+        $str = sprintf(
+            '%s%s%s%s%s',
+            $credentials->getUsername(),
+            $reference,
+            $customerReference,
+            $customerNo,
+            $credentials->getPassword()
+        );
 
         return md5($str);
     }

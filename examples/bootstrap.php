@@ -10,6 +10,8 @@ use Webit\SoapApi\Hydrator\HydratorSerializerBased;
 use Webit\GlsTracking\Api\Exception\ExceptionFactory;
 use Webit\SoapApi\Util\BinaryStringHelper;
 use Webit\SoapApi\SoapApiExecutorFactory;
+use Webit\GlsTracking\Model\UserCredentials;
+
 AnnotationRegistry::registerAutoloadNamespace(
     'JMS\Serializer\Annotation',
     __DIR__.'/../vendor/jms/serializer/src'
@@ -32,5 +34,7 @@ $hydrator = new HydratorSerializerBased($serializer, new BinaryStringHelper());
 $exceptionFactory = new ExceptionFactory();
 
 $apiFactory = new TrackingApiFactory($clientFactory, $executorFactory, $normalizer, $hydrator, $exceptionFactory);
+
+$credentials = new UserCredentials($config['username'], $config['password']);
 
 return $apiFactory;

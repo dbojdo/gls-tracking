@@ -78,15 +78,14 @@ class TrackingApiFactory
     }
 
     /**
-     * @param string $username
-     * @param string $password
+     * @param UserCredentials $credentials
      * @return TrackingApi
      */
-    public function createTrackingApi($username, $password)
+    public function createTrackingApi(UserCredentials $credentials)
     {
         return new TrackingApi(
             $this->getExecutor(),
-            new UserCredentials($username, $password)
+            $credentials
         );
     }
 

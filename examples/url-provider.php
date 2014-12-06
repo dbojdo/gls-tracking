@@ -11,12 +11,17 @@ $username = 'username';
 $urlProvider = $factory->createTrackingUrlProvider();
 
 $reference = $config['parcel-no'];
-$url = $urlProvider->getTrackingUrl($reference);
 
-printf("Url for tracking \"%s\": %s\n", $reference, $url);
+$url = $urlProvider->getStandardTrackingUrl($reference, $config['country'], $config['language']);
+
+printf("Url for tracking \"%s\" (encrypted): %s\n", $reference, $url);
+
+$url = $urlProvider->getEncryptedTrackingUrl($credentials, $reference, $config['language']);
+
+printf("Url for tracking \"%s\" (encrypted): %s\n", $reference, $url);
 
 $customerReference = 'customer-ref';
 $customerNo = 'customer-no';
-$url = $urlProvider->getCustomerReferenceTrackingUrl($customerReference, $customerNo);
+$url = $urlProvider->getEncryptedCustomerReferenceTrackingUrl($credentials, $customerReference, $customerNo, $config['language']);
 
 printf("Url for tracking \"%s\" with customer \"%s\": %s\n", $customerReference, $customerNo, $url);

@@ -6,7 +6,7 @@ $apiFactory = require 'bootstrap.php';
 
 $parcelNo = $config['parcel-no'];
 
-$api = $apiFactory->createTrackingApi($config['username'], $config['password']);
+$api = $apiFactory->createTrackingApi($credentials);
 $details = $api->getParcelDetails($parcelNo);
 
 /** @var \Webit\GlsTracking\Model\Event $event */

@@ -27,6 +27,19 @@ class Status
     protected $final = false;
 
     /**
+     * @param string $code
+     * @param string $name
+     * @param bool $final
+     */
+    public function __construct($code, $name, $final = false)
+    {
+        $this->code = $code;
+        $this->name = $name;
+        $this->final = $final;
+    }
+
+
+    /**
      * @return string
      */
     public function getCode()

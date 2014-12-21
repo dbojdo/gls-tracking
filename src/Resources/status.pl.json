@@ -1,0 +1,1161 @@
+[{
+  "code": "1",
+  "final": false,
+  "description": "Odbior u nadawcy"
+},{
+  "code": "2",
+  "final": false,
+  "description": "Wejscie APL"
+},{
+  "code": "3",
+  "final": false,
+  "description": "Zmiana kodu CE"
+},{
+  "code": "4",
+  "final": false,
+  "description": "Skan kontrolny KK"
+},{
+  "code": "5",
+  "final": false,
+  "description": "Dane od KK otrzymane"
+},{
+  "code": "6",
+  "final": false,
+  "description": "Sort. wstepne MP"
+},{
+  "code": "10",
+  "final": false,
+  "description": "Dane paczki recznie"
+},{
+  "code": "11",
+  "final": false,
+  "description": "Wprowadzenie Pickup"
+},{
+  "code": "12",
+  "final": false,
+  "description": "#Location liability"
+},{
+  "code": "14",
+  "final": false,
+  "description": "Opakowanie zabezpieczone"
+},{
+  "code": "15",
+  "final": false,
+  "description": "Paczka miedzynarodowa"
+},{
+  "code": "16",
+  "final": false,
+  "description": "Reczne wprowadzenie danyc"
+},{
+  "code": "20",
+  "final": false,
+  "description": "Wyjscie do 'KURIER'"
+},{
+  "code": "21",
+  "final": false,
+  "description": "Wejscie 'KURIER'"
+},{
+  "code": "30",
+  "final": false,
+  "description": "Zmagaz. brak dok. cel."
+},{
+  "code": "31",
+  "final": false,
+  "description": "Wyjscie paczki celnej"
+},{
+  "code": "40",
+  "final": false,
+  "description": "#External Forwarder"
+},{
+  "code": "50",
+  "final": false,
+  "description": "Paczka zatrzymana w mag."
+},{
+  "code": "51",
+  "final": false,
+  "description": "Zwolnienie paczki zatrzym"
+},{
+  "code": "811",
+  "final": false,
+  "description": "Wejscie APL-'KURIER'"
+},{
+  "code": "1001",
+  "final": false,
+  "description": "Przejscie HUB NORMAL"
+},{
+  "code": "1002",
+  "final": false,
+  "description": "Przejscie HUB MP"
+},{
+  "code": "1003",
+  "final": false,
+  "description": "Przejscie HUB NTT"
+},{
+  "code": "1004",
+  "final": false,
+  "description": "Skan awaryjny"
+},{
+  "code": "1005",
+  "final": false,
+  "description": "Przejscie HUB NO_READ"
+},{
+  "code": "1006",
+  "final": false,
+  "description": "Sort. wstepne MP"
+},{
+  "code": "1007",
+  "final": false,
+  "description": "Przejscie RHUB"
+},{
+  "code": "1008",
+  "final": false,
+  "description": "Renumeracja paczki"
+},{
+  "code": "1009",
+  "final": false,
+  "description": "Przejscie HUB KK"
+},{
+  "code": "1010",
+  "final": false,
+  "description": "Wyjscie z HUB do 'KURIER'"
+},{
+  "code": "1011",
+  "final": false,
+  "description": "Wejscie HUB-Kurier"
+},{
+  "code": "1012",
+  "final": false,
+  "description": "Zwr: 'KURIER'-zwrot"
+},{
+  "code": "1013",
+  "final": false,
+  "description": "Wyjscie transp. lotniczy"
+},{
+  "code": "1020",
+  "final": false,
+  "description": "NIF-wejscie"
+},{
+  "code": "1021",
+  "final": false,
+  "description": "HUB-wejscie"
+},{
+  "code": "1022",
+  "final": false,
+  "description": "HUB-wyjscie"
+},{
+  "code": "1023",
+  "final": false,
+  "description": "NIF-wyjscie"
+},{
+  "code": "1024",
+  "final": true,
+  "description": "Posort. na zly kraj"
+},{
+  "code": "1025",
+  "final": false,
+  "description": "Przekazane do innego syst"
+},{
+  "code": "1027",
+  "final": false,
+  "description": "Uszkodzona na wejsciu HUB"
+},{
+  "code": "1028",
+  "final": false,
+  "description": "Paczka w magazynie HUB"
+},{
+  "code": "1029",
+  "final": false,
+  "description": "Przejscie HUB KK MP"
+},{
+  "code": "1030",
+  "final": false,
+  "description": "Tranzyt"
+},{
+  "code": "1039",
+  "final": false,
+  "description": "Przejscie HUB KK NTT"
+},{
+  "code": "1101",
+  "final": false,
+  "description": "Paczka uszkodz. na wej."
+},{
+  "code": "1102",
+  "final": false,
+  "description": "Paczka zniszcz. na wej."
+},{
+  "code": "1106",
+  "final": false,
+  "description": "Silnie zabrudzona/Sprawca"
+},{
+  "code": "1107",
+  "final": false,
+  "description": "Silnie zabrudzona"
+},{
+  "code": "1110",
+  "final": false,
+  "description": "Zwr:Brak zawartosci"
+},{
+  "code": "1111",
+  "final": false,
+  "description": "Zwr:Brak czesci zawart."
+},{
+  "code": "1112",
+  "final": false,
+  "description": "Zwr: Wyciek"
+},{
+  "code": "1113",
+  "final": false,
+  "description": "Zwr:Niewlasciwe opak."
+},{
+  "code": "1114",
+  "final": false,
+  "description": "Zwr:Brak naklejki kier."
+},{
+  "code": "1115",
+  "final": false,
+  "description": "Paczka zutylizowana"
+},{
+  "code": "1117",
+  "final": false,
+  "description": "Zwr: Niezgodna. z regul."
+},{
+  "code": "1118",
+  "final": false,
+  "description": "Uszkodzona w sortowni"
+},{
+  "code": "2001",
+  "final": false,
+  "description": "Wejscie EPL"
+},{
+  "code": "2002",
+  "final": false,
+  "description": "Skan prewencyjny"
+},{
+  "code": "2003",
+  "final": false,
+  "description": "Brak/blad danych"
+},{
+  "code": "2005",
+  "final": false,
+  "description": "Paczka w magazynie"
+},{
+  "code": "2006",
+  "final": false,
+  "description": "Paczka zmagazynowana"
+},{
+  "code": "2007",
+  "final": false,
+  "description": "Wejscie Satellitendepot"
+},{
+  "code": "2010",
+  "final": false,
+  "description": "W doreczeniu"
+},{
+  "code": "2011",
+  "final": true,
+  "description": "Doreczona"
+},{
+  "code": "2012",
+  "final": true,
+  "description": "Doreczona w innej filii"
+},{
+  "code": "2013",
+  "final": false,
+  "description": "Brak awizacji"
+},{
+  "code": "2015",
+  "final": false,
+  "description": "Doreczona - Parcel Shop"
+},{
+  "code": "2016",
+  "final": false,
+  "description": "Doreczona na poczcie"
+},{
+  "code": "2017",
+  "final": false,
+  "description": "Ustalony termin dostawy"
+},{
+  "code": "2020",
+  "final": false,
+  "description": "Paczka bez danych EDI"
+},{
+  "code": "2021",
+  "final": false,
+  "description": "Dane bez paczki"
+},{
+  "code": "2030",
+  "final": false,
+  "description": "Paczka Ident Service"
+},{
+  "code": "2031",
+  "final": false,
+  "description": "Paczka powr. Ident Serv."
+},{
+  "code": "2100",
+  "final": false,
+  "description": "Uszkodz. wejscie EPL/HUB"
+},{
+  "code": "2102",
+  "final": false,
+  "description": "Zniszczona na wejsciu EPL"
+},{
+  "code": "2103",
+  "final": false,
+  "description": "Uszkodzona przez kuriera"
+},{
+  "code": "2104",
+  "final": false,
+  "description": "Zniszczona przez kuriera"
+},{
+  "code": "2106",
+  "final": true,
+  "description": "Paczka zagubiona"
+},{
+  "code": "2107",
+  "final": false,
+  "description": "Czesc. okradziona na wej."
+},{
+  "code": "2108",
+  "final": false,
+  "description": "Czesc. okradz. u kuriera"
+},{
+  "code": "2109",
+  "final": false,
+  "description": "Korekta raportu do weryf."
+},{
+  "code": "2110",
+  "final": true,
+  "description": "Paczka zutylizowana"
+},{
+  "code": "2111",
+  "final": false,
+  "description": "Uszkodz. w depot"
+},{
+  "code": "2112",
+  "final": true,
+  "description": "Reklamacja (roszczenie)"
+},{
+  "code": "2113",
+  "final": true,
+  "description": "Uszkodz. zwrot od HVS"
+},{
+  "code": "2114",
+  "final": true,
+  "description": "Exchange bez zawartosci"
+},{
+  "code": "2115",
+  "final": true,
+  "description": "Szkoda zbiorcza"
+},{
+  "code": "2200",
+  "final": false,
+  "description": "Nie zostanie dorecz."
+},{
+  "code": "2202",
+  "final": false,
+  "description": "Uzgodniony term. dostawy"
+},{
+  "code": "2203",
+  "final": true,
+  "description": "Zle sortowana"
+},{
+  "code": "2204",
+  "final": true,
+  "description": "Zle kodowana"
+},{
+  "code": "2205",
+  "final": true,
+  "description": "Przekierowanie"
+},{
+  "code": "2232",
+  "final": false,
+  "description": "PS Odmowa przyjecia uszk."
+},{
+  "code": "2233",
+  "final": false,
+  "description": "Odmowa przyjecia przez PS"
+},{
+  "code": "2234",
+  "final": false,
+  "description": "PS Po terminie mag."
+},{
+  "code": "2235",
+  "final": false,
+  "description": "Zmiana Parcel Shop"
+},{
+  "code": "2236",
+  "final": false,
+  "description": "Bledne uzycie statusu"
+},{
+  "code": "2237",
+  "final": false,
+  "description": "PS Odmowa odbiorca"
+},{
+  "code": "2240",
+  "final": false,
+  "description": "Brak kontroli dokumentu I"
+},{
+  "code": "2241",
+  "final": false,
+  "description": "#correct PIN entered"
+},{
+  "code": "2242",
+  "final": false,
+  "description": "#wrong PIN entered"
+},{
+  "code": "2243",
+  "final": false,
+  "description": "#Wrong date of birth"
+},{
+  "code": "2244",
+  "final": false,
+  "description": "#PIN Error"
+},{
+  "code": "2245",
+  "final": false,
+  "description": "Brak mozliwosci dostawy"
+},{
+  "code": "2246",
+  "final": false,
+  "description": "Identyfikacja niemozliwa"
+},{
+  "code": "2247",
+  "final": false,
+  "description": "Brak towaru do wymiany EX"
+},{
+  "code": "2248",
+  "final": false,
+  "description": "Brak dokumentow ID/DOR"
+},{
+  "code": "2249",
+  "final": false,
+  "description": "Brak gotowki"
+},{
+  "code": "2250",
+  "final": false,
+  "description": "Ponowne doreczenie"
+},{
+  "code": "2251",
+  "final": false,
+  "description": "Przerwa urlopowa"
+},{
+  "code": "2252",
+  "final": false,
+  "description": "Odbiorca nieobecny"
+},{
+  "code": "2253",
+  "final": false,
+  "description": "Koniec przyjm. towaru"
+},{
+  "code": "2254",
+  "final": false,
+  "description": "Sortowana na zla trase"
+},{
+  "code": "2255",
+  "final": false,
+  "description": "Brak proby doreczenia"
+},{
+  "code": "2256",
+  "final": false,
+  "description": "Zly adres"
+},{
+  "code": "2257",
+  "final": false,
+  "description": "Odb. nie przyjmuje towaru"
+},{
+  "code": "2258",
+  "final": false,
+  "description": "Odbior wlasny"
+},{
+  "code": "2259",
+  "final": false,
+  "description": "Przesylka niekompletna"
+},{
+  "code": "2260",
+  "final": false,
+  "description": "Przekaz. Fala1->Fala2"
+},{
+  "code": "2261",
+  "final": false,
+  "description": "Przekaz. Fala2->Fala1"
+},{
+  "code": "2262",
+  "final": false,
+  "description": "Trzecie dorecz. - platne"
+},{
+  "code": "2263",
+  "final": false,
+  "description": "Brak osoby upowaznionej"
+},{
+  "code": "2268",
+  "final": false,
+  "description": "Paczka nienormatywna"
+},{
+  "code": "2269",
+  "final": false,
+  "description": "Awizo pozostawione"
+},{
+  "code": "2270",
+  "final": false,
+  "description": "Awizo - ref. usunieta"
+},{
+  "code": "2273",
+  "final": false,
+  "description": "Zly adres - USPS"
+},{
+  "code": "2300",
+  "final": false,
+  "description": "Odmowa - brak dokumentow"
+},{
+  "code": "2303",
+  "final": true,
+  "description": "Odmowa - uszkodzona"
+},{
+  "code": "2304",
+  "final": true,
+  "description": "Odmowa"
+},{
+  "code": "2404",
+  "final": true,
+  "description": "Zwrot do nadawcy"
+},{
+  "code": "2501",
+  "final": false,
+  "description": "Paczka wyjasniana"
+},{
+  "code": "2502",
+  "final": false,
+  "description": "Ponowne pozysk. podpisu"
+},{
+  "code": "2503",
+  "final": false,
+  "description": "Wyskanowanie z LD"
+},{
+  "code": "2600",
+  "final": false,
+  "description": "Brak miejsca"
+},{
+  "code": "2800",
+  "final": false,
+  "description": "Brakujace/bledne dok. cel"
+},{
+  "code": "2801",
+  "final": false,
+  "description": "Eksport/odprawa celna"
+},{
+  "code": "2802",
+  "final": false,
+  "description": "Brak danych celnych"
+},{
+  "code": "2803",
+  "final": false,
+  "description": "Paczka zatrzymana"
+},{
+  "code": "2804",
+  "final": false,
+  "description": "Paczka zwoln. Przez UC"
+},{
+  "code": "2805",
+  "final": false,
+  "description": "Przsylka zablokowana UC"
+},{
+  "code": "2806",
+  "final": false,
+  "description": "Brak upowazn. do oclenia"
+},{
+  "code": "2807",
+  "final": false,
+  "description": "Paczka w urzedzie celnym"
+},{
+  "code": "2808",
+  "final": false,
+  "description": "Paczka wojskowa"
+},{
+  "code": "2809",
+  "final": false,
+  "description": "Brak kontaktu z odbiorca"
+},{
+  "code": "2810",
+  "final": false,
+  "description": "Paczka/dok przek. do UC"
+},{
+  "code": "2811",
+  "final": false,
+  "description": "Zwrot do NIF"
+},{
+  "code": "2812",
+  "final": false,
+  "description": "Zabroniony towar"
+},{
+  "code": "2813",
+  "final": false,
+  "description": "Wyjasnianie adresu"
+},{
+  "code": "2814",
+  "final": false,
+  "description": "Konfiskata przez UC"
+},{
+  "code": "2815",
+  "final": false,
+  "description": "Zwrot przez UC"
+},{
+  "code": "2816",
+  "final": false,
+  "description": "Rewizja celna"
+},{
+  "code": "2817",
+  "final": false,
+  "description": "Paczka w mag. Agent Celny"
+},{
+  "code": "2818",
+  "final": false,
+  "description": "Nieuregul. nalezn. celne"
+},{
+  "code": "2819",
+  "final": false,
+  "description": "Odm. zaplaty nalezn. celn"
+},{
+  "code": "2820",
+  "final": false,
+  "description": "Przesylka celna niekompl."
+},{
+  "code": "2821",
+  "final": false,
+  "description": "Zniszcz. przez Urzad Celn"
+},{
+  "code": "2900",
+  "final": true,
+  "description": "Odebrana (skaner)"
+},{
+  "code": "2901",
+  "final": true,
+  "description": "P&R/P&S: Wejscie APL"
+},{
+  "code": "2902",
+  "final": true,
+  "description": "Druk naklejki adresowej"
+},{
+  "code": "2903",
+  "final": false,
+  "description": "Referencja"
+},{
+  "code": "2911",
+  "final": true,
+  "description": "Urlop"
+},{
+  "code": "2912",
+  "final": true,
+  "description": "Odbiorca nieobecny"
+},{
+  "code": "2913",
+  "final": true,
+  "description": "Sortowana na zla trase"
+},{
+  "code": "2914",
+  "final": true,
+  "description": "Koniec przyjm. towaru"
+},{
+  "code": "2915",
+  "final": true,
+  "description": "Brak proby odbioru"
+},{
+  "code": "2918",
+  "final": true,
+  "description": "Zly adres"
+},{
+  "code": "2933",
+  "final": true,
+  "description": "Zniszczona przez kuriera"
+},{
+  "code": "2934",
+  "final": true,
+  "description": "Paczka zagubiona"
+},{
+  "code": "2939",
+  "final": true,
+  "description": "Zniszczona w depot"
+},{
+  "code": "2950",
+  "final": true,
+  "description": "Klient niepoinformowany"
+},{
+  "code": "2951",
+  "final": true,
+  "description": "Przesylka niezapakowana"
+},{
+  "code": "2952",
+  "final": true,
+  "description": "Przesylka nienormatywna"
+},{
+  "code": "2953",
+  "final": true,
+  "description": "Brak przesylki"
+},{
+  "code": "2954",
+  "final": true,
+  "description": "Przesylka wyslana inaczej"
+},{
+  "code": "2955",
+  "final": true,
+  "description": "Dorecz. EXC bez wymiany"
+},{
+  "code": "2956",
+  "final": true,
+  "description": "Tylko numer paczki"
+},{
+  "code": "2957",
+  "final": true,
+  "description": "Paczka zwr. EXC-Service"
+},{
+  "code": "2958",
+  "final": true,
+  "description": "Brak mozliwosci dostawy"
+},{
+  "code": "3000",
+  "final": false,
+  "description": "Wiadomosc"
+},{
+  "code": "3010",
+  "final": true,
+  "description": "Paczka anulowana"
+},{
+  "code": "3100",
+  "final": false,
+  "description": "Dane COD bez skanu wej."
+},{
+  "code": "3101",
+  "final": false,
+  "description": "Wejscie zaplaty"
+},{
+  "code": "3102",
+  "final": false,
+  "description": "Przekaz COD do klienta"
+},{
+  "code": "3103",
+  "final": false,
+  "description": "Roznice w kwotach"
+},{
+  "code": "3104",
+  "final": false,
+  "description": "Zmiana danych bankowych"
+},{
+  "code": "3105",
+  "final": false,
+  "description": "Konto zablokowane"
+},{
+  "code": "3106",
+  "final": false,
+  "description": "Konto reaktywowane"
+},{
+  "code": "3107",
+  "final": false,
+  "description": "Zmiana kwoty HQ"
+},{
+  "code": "3108",
+  "final": false,
+  "description": "Zmiana kwoty EXW"
+},{
+  "code": "3110",
+  "final": false,
+  "description": "Zwolniona do zmiany COD"
+},{
+  "code": "3111",
+  "final": false,
+  "description": "Paczka COD zablokowana"
+},{
+  "code": "3112",
+  "final": false,
+  "description": "Zmiana COD przeprowadz."
+},{
+  "code": "3113",
+  "final": false,
+  "description": "DOR - zle sortowany"
+},{
+  "code": "3114",
+  "final": false,
+  "description": "DOR APL - wejscie"
+},{
+  "code": "3115",
+  "final": false,
+  "description": "DOR APL  - wyjscie"
+},{
+  "code": "3116",
+  "final": false,
+  "description": "DOR APL - blad"
+},{
+  "code": "3117",
+  "final": false,
+  "description": "DOR - powiazanie"
+},{
+  "code": "3118",
+  "final": false,
+  "description": "DOR EPL - wejscie"
+},{
+  "code": "3119",
+  "final": false,
+  "description": "DOR EPL - wyjscie"
+},{
+  "code": "3120",
+  "final": false,
+  "description": "Polecenie przelewu (SAP)"
+},{
+  "code": "3121",
+  "final": false,
+  "description": "Czek Sprawdzony"
+},{
+  "code": "3122",
+  "final": false,
+  "description": "Czek Otrzymany"
+},{
+  "code": "3123",
+  "final": false,
+  "description": "Zmiana serwisu"
+},{
+  "code": "3124",
+  "final": false,
+  "description": "#Verrechnung"
+},{
+  "code": "4211",
+  "final": false,
+  "description": "#no coll vacation"
+},{
+  "code": "4212",
+  "final": false,
+  "description": "#no coll not in/bus. clos"
+},{
+  "code": "4213",
+  "final": false,
+  "description": "#no coll wrong sorted"
+},{
+  "code": "4214",
+  "final": false,
+  "description": "#no coll shippers bus. cl"
+},{
+  "code": "4215",
+  "final": false,
+  "description": "#no coll not attempted"
+},{
+  "code": "4218",
+  "final": false,
+  "description": "#no coll address incorrec"
+},{
+  "code": "4245",
+  "final": false,
+  "description": "#no coll no road access p"
+},{
+  "code": "4251",
+  "final": false,
+  "description": "#no coll parcel not ready"
+},{
+  "code": "4252",
+  "final": false,
+  "description": "#no coll excl.GLS Terms/C"
+},{
+  "code": "4253",
+  "final": false,
+  "description": "#no coll no pcl. to picku"
+},{
+  "code": "4257",
+  "final": false,
+  "description": "#no coll goods issue clos"
+},{
+  "code": "4501",
+  "final": false,
+  "description": "#Disp: del. on defined da"
+},{
+  "code": "4502",
+  "final": false,
+  "description": "#Disp: deposit allowed"
+},{
+  "code": "4503",
+  "final": false,
+  "description": "#Disp: del. on new addres"
+},{
+  "code": "4504",
+  "final": false,
+  "description": "#Disp: del. in Parcel Sho"
+},{
+  "code": "4505",
+  "final": false,
+  "description": "#Disp: consignee PU"
+},{
+  "code": "4506",
+  "final": false,
+  "description": "#Disp: refused"
+},{
+  "code": "4507",
+  "final": false,
+  "description": "#Delivery in the evening"
+},{
+  "code": "4508",
+  "final": false,
+  "description": "#Delivery on Saturday"
+},{
+  "code": "8000",
+  "final": false,
+  "description": "Region: Rejestracja rekla"
+},{
+  "code": "8001",
+  "final": false,
+  "description": "Rejestracja reklamacji"
+},{
+  "code": "8002",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 02"
+},{
+  "code": "8003",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 03"
+},{
+  "code": "8004",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 04"
+},{
+  "code": "8005",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 05"
+},{
+  "code": "8006",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 06"
+},{
+  "code": "8007",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 07"
+},{
+  "code": "8008",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 08"
+},{
+  "code": "8009",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 09"
+},{
+  "code": "8010",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 10"
+},{
+  "code": "8011",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 11"
+},{
+  "code": "8012",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 12"
+},{
+  "code": "8013",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 13"
+},{
+  "code": "8014",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 14"
+},{
+  "code": "8015",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 15"
+},{
+  "code": "8016",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 16"
+},{
+  "code": "8017",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 17"
+},{
+  "code": "8018",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 18"
+},{
+  "code": "8019",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 19"
+},{
+  "code": "8020",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 20"
+},{
+  "code": "8021",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 21"
+},{
+  "code": "8022",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 22"
+},{
+  "code": "8023",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 23"
+},{
+  "code": "8024",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 24"
+},{
+  "code": "8025",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 25"
+},{
+  "code": "8026",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 26"
+},{
+  "code": "8027",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 27"
+},{
+  "code": "8028",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 28"
+},{
+  "code": "8029",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 30"
+},{
+  "code": "8030",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 31"
+},{
+  "code": "8031",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 32"
+},{
+  "code": "8032",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 33"
+},{
+  "code": "8033",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 34"
+},{
+  "code": "8034",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 35"
+},{
+  "code": "8035",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 35"
+},{
+  "code": "8036",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 36"
+},{
+  "code": "8037",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 37"
+},{
+  "code": "8038",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 38"
+},{
+  "code": "8039",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 39"
+},{
+  "code": "8040",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 40"
+},{
+  "code": "8041",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 41"
+},{
+  "code": "8042",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 42"
+},{
+  "code": "8043",
+  "final": false,
+  "description": "Druk wzoru koresp. nr 43"
+},{
+  "code": "8090",
+  "final": false,
+  "description": "Rejestracja zakonczona"
+},{
+  "code": "8091",
+  "final": false,
+  "description": "Ponowne otwarcie akt"
+},{
+  "code": "8092",
+  "final": false,
+  "description": "Rejestracja otwarta"
+},{
+  "code": "8093",
+  "final": false,
+  "description": "Zablokowanie Akt"
+},{
+  "code": "8100",
+  "final": false,
+  "description": "Zmiana SP"
+},{
+  "code": "8101",
+  "final": false,
+  "description": "Zmiana sprawcy"
+},{
+  "code": "8102",
+  "final": false,
+  "description": "Zmiana kwoty uznania"
+},{
+  "code": "8150",
+  "final": false,
+  "description": "Zgloszone do ubezp."
+},{
+  "code": "8200",
+  "final": false,
+  "description": "Wejscie"
+},{
+  "code": "8201",
+  "final": false,
+  "description": "Spor prawny"
+},{
+  "code": "8202",
+  "final": false,
+  "description": "Odrzucone"
+},{
+  "code": "8203",
+  "final": false,
+  "description": "Zakoncz. bez wyplaty"
+},{
+  "code": "8204",
+  "final": false,
+  "description": "Zwolnione do czesc. wypla"
+},{
+  "code": "8205",
+  "final": false,
+  "description": "Zwolnione do wyplaty"
+},{
+  "code": "8206",
+  "final": false,
+  "description": "Niekompletne"
+},{
+  "code": "8300",
+  "final": false,
+  "description": "Uregulowane wewnetrznie"
+},{
+  "code": "8301",
+  "final": false,
+  "description": "Akta zamkniete"
+},{
+  "code": "8302",
+  "final": false,
+  "description": "Zwolmienie wyplaty"
+},{
+  "code": "8400",
+  "final": false,
+  "description": "Zlecenie wyplaty przez FI"
+},{
+  "code": "8401",
+  "final": false,
+  "description": "Wyplata FIBU"
+},{
+  "code": "8402",
+  "final": false,
+  "description": "Rozliczenie FIBU"
+},{
+  "code": "8403",
+  "final": false,
+  "description": "Zlecenie wyplaty (FIBU) n"
+},{
+  "code": "8404",
+  "final": false,
+  "description": "Zakonczone bez inf. SAP"
+}]

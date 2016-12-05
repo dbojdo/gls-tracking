@@ -2,7 +2,9 @@
 require __DIR__.'/../vendor/autoload.php';
 
 use Doctrine\Common\Annotations\AnnotationRegistry;
+use JMS\Serializer\EventDispatcher\EventDispatcherInterface;
 use JMS\Serializer\SerializerBuilder;
+use Webit\GlsTracking\Model\Serialiser\TuDetailsResponseDeserialisationListener;
 use Webit\SoapApi\SoapClient\SoapClientFactory;
 use Webit\GlsTracking\Api\Factory\TrackingApiFactory;
 use Webit\SoapApi\Input\InputNormalizerSerializerBased;
@@ -25,7 +27,12 @@ if (is_file(__DIR__ .'/config.php') == false) {
 
 $config = require __DIR__ .'/config.php';
 
-$serializer = SerializerBuilder::create()->build();
+$builder = SerializerBuilder::create();
+$builder->addDefaultListeners();
+$builder->configureListeners(function (EventDispatcherInterface $dispatcher) {
+   $dispatcher->addSubscriber(new TuDetailsResponseDeserialisationListener());
+});
+$serializer = $builder->build();
 
 $clientFactory = new SoapClientFactory();
 $executorFactory = new SoapApiExecutorFactory();

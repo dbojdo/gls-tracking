@@ -1,0 +1,50 @@
+{
+  "ExitCode": {
+    "ErrorCode": 0,
+    "ErrorDscr": "OK"
+  },
+  "TuNo": "30684457018",
+  "NationalRef": "Origin National Reference in Unicode,30002622,46578",
+  "ConsigneeAddress": null,
+  "ShipperAddress": null,
+  "RequesterAddress": null,
+  "CustomerReference": {
+    "ReferenceType": "Customer_s own reference number",
+    "ReferenceValue": "294848"
+  },
+  "DeliveryDateTime": {
+    "Year": 2016,
+    "Month": 11,
+    "Day": 17,
+    "Hour": 8,
+    "Minut": 41
+  },
+  "PickupDateTime": {
+    "Year": 2016,
+    "Month": 11,
+    "Day": 16,
+    "Hour": 19,
+    "Minut": 51
+  },
+  "Product": "ExpressParcel",
+  "Services": "10:00Service",
+  "TuWeight": 20,
+  "History":
+    {
+      "Date": {
+        "Year": 2016,
+        "Month": 11,
+        "Day": 16,
+        "Hour": 19,
+        "Minut": 51
+      },
+      "LocationCode": "PL3000",
+      "LocationName": "Skawina",
+      "CountryName": "Poland",
+      "Code": "0.0",
+      "Desc": "The parcel was handed over to GLS.",
+      "ReasonName": ""
+    }
+  ,
+  "Signature": "OKONSKI"
+}

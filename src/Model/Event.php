@@ -73,6 +73,35 @@ class Event
     private $reasonName;
 
     /**
+     * Event constructor.
+     * @param DateTime $date
+     * @param string $locationCode
+     * @param string $locationName
+     * @param string $countryName
+     * @param string $code
+     * @param string $description
+     * @param string $reasonName
+     */
+    public function __construct(
+        DateTime $date = null,
+        $locationCode = null,
+        $locationName = null,
+        $countryName = null,
+        $code = null,
+        $description = null,
+        $reasonName = null
+    ) {
+        $this->date = $date;
+        $this->locationCode = $locationCode;
+        $this->locationName = $locationName;
+        $this->countryName = $countryName;
+        $this->code = $code;
+        $this->description = $description;
+        $this->reasonName = $reasonName;
+    }
+
+
+    /**
      * @return string
      */
     public function getCode()

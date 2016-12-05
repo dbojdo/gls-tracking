@@ -8,9 +8,13 @@ namespace Webit\GlsTracking\Model\Message;
 
 use JMS\Serializer\Annotation as JMS;
 use Doctrine\Common\Collections\ArrayCollection;
+use JMS\Serializer\DeserializationContext;
+use JMS\Serializer\JsonDeserializationVisitor;
 use Webit\GlsTracking\Model\Address;
 use Webit\GlsTracking\Model\CustomerReference;
 use Webit\GlsTracking\Model\DateTime;
+use Webit\GlsTracking\Model\Event;
+use Webit\GlsTracking\Model\ExitCode;
 
 /**
  * Class TuDetailsResponse
@@ -86,7 +90,7 @@ class TuDetailsResponse extends AbstractResponse
      * @JMS\Type("string")
      * @JMS\SerializedName("Services")
      *
-     * @var ArrayCollection
+     * @var string
      */
     private $services;
 
@@ -123,6 +127,57 @@ class TuDetailsResponse extends AbstractResponse
     private $signature;
 
     /**
+     * TuDetailsResponse constructor.
+     * @param ExitCode $exitCode
+     * @param string $tuNo
+     * @param string $nationalRef
+     * @param Address $consigneeAddress
+     * @param Address $shipperAddress
+     * @param Address $requesterAddress
+     * @param DateTime $deliveryDateTime
+     * @param DateTime $pickupDateTime
+     * @param string $product
+     * @param string $services
+     * @param ArrayCollection $customerReference
+     * @param float $tuWeight
+     * @param ArrayCollection $history
+     * @param string $signature
+     */
+    public function __construct(
+        ExitCode $exitCode = null,
+        $tuNo = null,
+        $nationalRef = null,
+        Address $consigneeAddress = null,
+        Address $shipperAddress = null,
+        Address $requesterAddress = null,
+        DateTime $deliveryDateTime = null,
+        DateTime $pickupDateTime = null,
+        $product = null,
+        $services = null,
+        ArrayCollection $customerReference = null,
+        $tuWeight = null,
+        ArrayCollection $history = null,
+        $signature = null
+    ) {
+        parent::__construct($exitCode);
+
+        $this->tuNo = $tuNo;
+        $this->nationalRef = $nationalRef;
+        $this->consigneeAddress = $consigneeAddress;
+        $this->shipperAddress = $shipperAddress;
+        $this->requesterAddress = $requesterAddress;
+        $this->deliveryDateTime = $deliveryDateTime;
+        $this->pickupDateTime = $pickupDateTime;
+        $this->product = $product;
+        $this->services = $services ?: new ArrayCollection();
+        $this->customerReference = $customerReference ?: new ArrayCollection();
+        $this->tuWeight = $tuWeight;
+        $this->history = $history ?: new ArrayCollection();
+        $this->signature = $signature;
+    }
+
+
+    /**
      * @return Address
      */
     public function getConsigneeAddress()
@@ -131,7 +186,7 @@ class TuDetailsResponse extends AbstractResponse
     }
 
     /**
-     * @return ArrayCollection
+     * @return ArrayCollection|CustomerReference[]
      */
     public function getCustomerReference()
     {
@@ -147,7 +202,7 @@ class TuDetailsResponse extends AbstractResponse
     }
 
     /**
-     * @return ArrayCollection
+     * @return ArrayCollection|Event[]
      */
     public function getHistory()
     {
@@ -187,7 +242,7 @@ class TuDetailsResponse extends AbstractResponse
     }
 
     /**
-     * @return ArrayCollection
+     * @return string
      */
     public function getServices()
     {

@@ -37,6 +37,17 @@ class ExitCode
     private $description;
 
     /**
+     * ExitCode constructor.
+     * @param int $code
+     * @param string $description
+     */
+    public function __construct($code, $description)
+    {
+        $this->code = $code;
+        $this->description = $description;
+    }
+
+    /**
      * @return int
      */
     public function getCode()

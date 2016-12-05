@@ -33,6 +33,17 @@ class CustomerReference
     private $value;
 
     /**
+     * CustomerReference constructor.
+     * @param string $type
+     * @param string $value
+     */
+    public function __construct($type = null, $value = null)
+    {
+        $this->type = $type;
+        $this->value = $value;
+    }
+
+    /**
      * @return string
      */
     public function getType()

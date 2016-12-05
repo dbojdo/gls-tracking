@@ -113,6 +113,50 @@ class Address
     private $country;
 
     /**
+     * Address constructor.
+     * @param string $name1
+     * @param string $name2
+     * @param string $name3
+     * @param string $contactName
+     * @param string $street1
+     * @param string $blockNo1
+     * @param string $street2
+     * @param string $blockNo2
+     * @param string $zipCode
+     * @param string $city
+     * @param string $province
+     * @param string $country
+     */
+    public function __construct(
+        $name1 = null,
+        $name2 = null,
+        $name3 = null,
+        $contactName = null,
+        $street1 = null,
+        $blockNo1 = null,
+        $street2 = null,
+        $blockNo2 = null,
+        $zipCode = null,
+        $city = null,
+        $province = null,
+        $country = null
+    ) {
+        $this->name1 = $name1;
+        $this->name2 = $name2;
+        $this->name3 = $name3;
+        $this->contactName = $contactName;
+        $this->street1 = $street1;
+        $this->blockNo1 = $blockNo1;
+        $this->street2 = $street2;
+        $this->blockNo2 = $blockNo2;
+        $this->zipCode = $zipCode;
+        $this->city = $city;
+        $this->province = $province;
+        $this->country = $country;
+    }
+
+
+    /**
      * @return string
      */
     public function getBlockNo1()

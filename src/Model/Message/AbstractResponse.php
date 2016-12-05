@@ -9,6 +9,7 @@
 namespace Webit\GlsTracking\Model\Message;
 
 use JMS\Serializer\Annotation as JMS;
+use Webit\GlsTracking\Model\ExitCode;
 
 /**
  * Class AbstractResponse
@@ -23,6 +24,11 @@ abstract class AbstractResponse
      * @var ExitCode
      */
     private $exitCode;
+
+    public function __construct(ExitCode $exitCode = null)
+    {
+        $this->exitCode = $exitCode;
+    }
 
     public function getExitCode()
     {

@@ -95,7 +95,7 @@ class TuDetailsResponse extends AbstractResponse
     private $services;
 
     /**
-     * @JMS\Type("ArrayCollection<Webit\GlsTracking\Model\CustomerReference>")
+     * @JMS\Type("Webit\GlsTracking\Model\CustomerReference")
      * @JMS\SerializedName("CustomerReference")
      *
      * @var ArrayCollection

@@ -4,7 +4,8 @@ require __DIR__.'/../vendor/autoload.php';
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use JMS\Serializer\EventDispatcher\EventDispatcherInterface;
 use JMS\Serializer\SerializerBuilder;
-use Webit\GlsTracking\Model\Serialiser\TuDetailsResponseDeserialisationListener;
+use Webit\GlsTracking\Model\Serialiser\TuDetailsResponseDeserialisationSubscriber;
+use Webit\GlsTracking\Model\Serialiser\TuListResponseDeserialisationSubscriber;
 use Webit\SoapApi\SoapClient\SoapClientFactory;
 use Webit\GlsTracking\Api\Factory\TrackingApiFactory;
 use Webit\SoapApi\Input\InputNormalizerSerializerBased;
@@ -30,7 +31,8 @@ $config = require __DIR__ .'/config.php';
 $builder = SerializerBuilder::create();
 $builder->addDefaultListeners();
 $builder->configureListeners(function (EventDispatcherInterface $dispatcher) {
-   $dispatcher->addSubscriber(new TuDetailsResponseDeserialisationListener());
+    $dispatcher->addSubscriber(new TuDetailsResponseDeserialisationSubscriber());
+    $dispatcher->addSubscriber(new TuListResponseDeserialisationSubscriber());
 });
 $serializer = $builder->build();
 

@@ -2,9 +2,8 @@
 /**
  * TuDetailsResponseDeserialisationListener.php
  *
- * @author dbojdo - Daniel Bojdo <daniel.bojdo@8x8.com>
- * Created on 05/12/2016 15:20
- * Copyright (C) 8x8, Inc.
+ * @author dbojdo - Daniel Bojdo <daniel.bojdo@web-it.eu>
+ * Created at: 2016/12/05 15:20
  */
 
 namespace Webit\GlsTracking\Model\Serialiser;
@@ -12,8 +11,23 @@ namespace Webit\GlsTracking\Model\Serialiser;
 use JMS\Serializer\EventDispatcher\EventSubscriberInterface;
 use JMS\Serializer\EventDispatcher\PreDeserializeEvent;
 
-class TuDetailsResponseDeserialisationListener implements EventSubscriberInterface
+class TuDetailsResponseDeserialisationSubscriber implements EventSubscriberInterface
 {
+    /**
+     * @var CollectionEnsuringDeserialisationListener
+     */
+    private $innerListener;
+
+    /**
+     * TuDetailsResponseDeserialisationListener constructor.
+     */
+    public function __construct()
+    {
+        $this->innerListener = new CollectionEnsuringDeserialisationListener(
+            array('CustomerReference', 'History')
+        );
+    }
+
 
     /**
      * Returns the events to which this class has subscribed.
@@ -46,33 +60,6 @@ class TuDetailsResponseDeserialisationListener implements EventSubscriberInterfa
      */
     public function onPreDeserialise(PreDeserializeEvent $event)
     {
-        $data = $event->getData();
-
-        if (isset($data['CustomerReference']) && is_array($data['CustomerReference'])) {
-            $data['CustomerReference'] = $this->ensureCollection($data['CustomerReference']);
-        }
-
-        if (isset($data['History']) && is_array($data['History'])) {
-            $data['History'] = $this->ensureCollection($data['History']);
-        }
-
-        $event->setData($data);
-    }
-
-    /**
-     * @param array $data
-     * @return array
-     */
-    private function ensureCollection(array $data)
-    {
-        if (count($data) == 0) {
-            return $data;
-        }
-
-        if (isset($data[0])) {
-            return $data;
-        }
-
-        return array($data);
+        $this->innerListener->onPreDeserialise($event);
     }
 }

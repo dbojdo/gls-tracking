@@ -1,18 +1,18 @@
 <?php
 /**
- * File: AuthException.php
- * Created at: 2014-11-25 06:26
+ * ImageNotFoundException.php
+ *
+ * @author dbojdo - Daniel Bojdo <daniel.bojdo@8x8.com>
+ * Created on 06/12/2016 14:46
+ * Copyright (C) 8x8, Inc.
  */
- 
+
 namespace Webit\GlsTracking\Api\Exception;
 
+use Exception;
 use Webit\GlsTracking\Model\Message\AbstractResponse;
 
-/**
- * Class AuthException
- * @author Daniel Bojdo <daniel.bojdo@web-it.eu>
- */
-class AuthException extends \RuntimeException implements GlsTrackingApiException
+class ImageNotFoundException extends \OutOfRangeException implements GlsTrackingApiException, ApiResponseAwareException
 {
     /**
      * @var AbstractResponse
@@ -34,4 +34,3 @@ class AuthException extends \RuntimeException implements GlsTrackingApiException
         return $this->apiResponse;
     }
 }
- 

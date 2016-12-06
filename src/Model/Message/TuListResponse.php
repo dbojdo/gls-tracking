@@ -28,6 +28,6 @@ class TuListResponse extends AbstractResponse
      */
     public function getRows()
     {
-        return $this->rows;
+        return $this->rows ?: new ArrayCollection();
     }
 }

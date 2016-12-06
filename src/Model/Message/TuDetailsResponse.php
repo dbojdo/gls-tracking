@@ -8,8 +8,6 @@ namespace Webit\GlsTracking\Model\Message;
 
 use JMS\Serializer\Annotation as JMS;
 use Doctrine\Common\Collections\ArrayCollection;
-use JMS\Serializer\DeserializationContext;
-use JMS\Serializer\JsonDeserializationVisitor;
 use Webit\GlsTracking\Model\Address;
 use Webit\GlsTracking\Model\CustomerReference;
 use Webit\GlsTracking\Model\DateTime;

@@ -19,6 +19,7 @@ class ExitCode
     const CODE_OK = 0;
     const CODE_AUTHENTICATION_ERROR = 502;
     const CODE_NO_DATA_FOUND = 998;
+    const CODE_IMAGE_NOT_FOUND = 999;
 
     /**
      * @JMS\Type("integer")

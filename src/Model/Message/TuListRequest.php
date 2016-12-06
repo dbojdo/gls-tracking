@@ -8,6 +8,7 @@ namespace Webit\GlsTracking\Model\Message;
 
 use Webit\GlsTracking\Model\DateTime;
 use Webit\GlsTracking\Model\Parameters;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * Class TuListRequest

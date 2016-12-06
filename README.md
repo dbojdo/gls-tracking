@@ -22,7 +22,8 @@ Add the **webit/gls-tracking** into **composer.json**
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use JMS\Serializer\EventDispatcher\EventDispatcherInterface;
 use JMS\Serializer\SerializerBuilder;
-use Webit\GlsTracking\Model\Serialiser\TuDetailsResponseDeserialisationListener;
+use Webit\GlsTracking\Model\Serialiser\TuDetailsResponseDeserialisationSubscriber;
+use Webit\GlsTracking\Model\Serialiser\TuListResponseDeserialisationSubscriber;
 use Webit\SoapApi\SoapClient\SoapClientFactory;
 use Webit\GlsTracking\Api\Factory\TrackingApiFactory;
 use Webit\SoapApi\Input\InputNormalizerSerializerBased;
@@ -40,7 +41,8 @@ AnnotationRegistry::registerAutoloadNamespace(
 $builder = SerializerBuilder::create();
 $builder->addDefaultListeners();
 $builder->configureListeners(function (EventDispatcherInterface $dispatcher) {
-   $dispatcher->addSubscriber(new TuDetailsResponseDeserialisationListener());
+   $dispatcher->addSubscriber(new TuDetailsResponseDeserialisationSubscriber());
+   $dispatcher->addSubscriber(new TuListResponseDeserialisationSubscriber());
 });
 $serializer = $builder->build();
 
@@ -124,3 +126,20 @@ Run:
  php examples/url-provider.php
  ```
  
+## Tests
+ 
+### Unit / Integration tests
+
+```bash
+./vendor/bin/phpunit --testsuite unit
+```
+
+### API tests
+
+***Requires valid GLS Tracking API credentials and valid parcel numbers***
+
+Copy **phpunit.xml.dist** to **phpunit.xml** then edit **env** variables accordingly 
+
+```bash
+./vendor/bin/phpunit --testsuite api
+```

@@ -8,16 +8,16 @@
 
 namespace Webit\GlsTracking\Api;
 
-use JMS\Serializer\SerializationContext;
 use Webit\GlsTracking\Api\Exception\AuthException;
 use Webit\GlsTracking\Api\Exception\Exception;
-use Webit\GlsTracking\Api\Exception\GlsApiCommunicationException;
 use Webit\GlsTracking\Api\Exception\GlsTrackingApiException;
+use Webit\GlsTracking\Api\Exception\ImageNotFoundException;
 use Webit\GlsTracking\Api\Exception\NoDataFoundException;
 use Webit\GlsTracking\Api\Exception\UnknownErrorCodeException;
 use Webit\GlsTracking\Model\DateTime;
 use Webit\GlsTracking\Model\ExitCode;
 use Webit\GlsTracking\Model\Message\AbstractRequest;
+use Webit\GlsTracking\Model\Message\AbstractResponse;
 use Webit\GlsTracking\Model\Message\TuDetailsRequest;
 use Webit\GlsTracking\Model\Message\TuDetailsResponse;
 use Webit\GlsTracking\Model\Message\TuListRequest;
@@ -61,10 +61,10 @@ class TrackingApi
 
         $request = array($soapFunction => $request);
 
-        /** @var AbstractRequest $response */
+        /** @var AbstractResponse $response */
         $response = $this->executor->executeSoapFunction($soapFunction, $request, $outputType);
         if ($response->getExitCode()->isSuccessfully() == false) {
-            throw $this->createException($response->getExitCode());
+            throw $this->createException($response);
         }
 
         return $response;
@@ -77,12 +77,16 @@ class TrackingApi
      */
     public function getParcelDetails($reference, $language = 'EN')
     {
-        /** @var TuDetailsResponse $response */
-        $response = $this->doRequest(
-            'GetTuDetail',
-            new TuDetailsRequest($this->filterReferenceNo($reference), new Parameters('LangCode', $language)),
-            'Webit\GlsTracking\Model\Message\TuDetailsResponse'
-        );
+        try {
+            /** @var TuDetailsResponse $response */
+            $response = $this->doRequest(
+                'GetTuDetail',
+                new TuDetailsRequest($this->filterReferenceNo($reference), new Parameters('LangCode', $language)),
+                'Webit\GlsTracking\Model\Message\TuDetailsResponse'
+            );
+        } catch (NoDataFoundException $e) {
+            $response = $e->getApiResponse();
+        }
 
         return $response;
     }
@@ -99,18 +103,23 @@ class TrackingApi
      */
     public function getParcelList(\DateTime $from, \DateTime $to, $reference = null, $customerReference = null, $language = 'EN')
     {
-        /** @var TuListResponse $response */
-        $response = $this->doRequest(
-            'GetTuList',
-            new TuListRequest(
-                DateTime::fromDateTime($from),
-                DateTime::fromDateTime($to),
-                $reference ? $this->filterReferenceNo($reference) : null,
-                $customerReference,
-                new Parameters('LangCode', $language)
-            ),
-            'Webit\GlsTracking\Model\Message\TuListResponse'
-        );
+        try {
+            /** @var TuListResponse $response */
+            $response = $this->doRequest(
+                'GetTuList',
+                new TuListRequest(
+                    DateTime::fromDateTime($from),
+                    DateTime::fromDateTime($to),
+                    $reference ? $this->filterReferenceNo($reference) : null,
+                    $customerReference,
+                    new Parameters('LangCode', $language)
+                ),
+                'Webit\GlsTracking\Model\Message\TuListResponse'
+            );
+
+        } catch (NoDataFoundException $e) {
+            $response = $e->getApiResponse();
+        }
 
         return $response;
     }
@@ -124,13 +133,18 @@ class TrackingApi
      */
     public function getProofOfDelivery($reference, $language = 'EN')
     {
-
-        /** @var TuPODResponse $response */
-        $response = $this->doRequest(
-            'GetTuPOD',
-            new TuPODRequest($this->filterReferenceNo($reference), new Parameters('LangCode', $language)),
-            'Webit\GlsTracking\Model\Message\TuPODResponse'
-        );
+        try {
+            /** @var TuPODResponse $response */
+            $response = $this->doRequest(
+                'GetTuPOD',
+                new TuPODRequest($this->filterReferenceNo($reference), new Parameters('LangCode', $language)),
+                'Webit\GlsTracking\Model\Message\TuPODResponse'
+            );
+        } catch (ImageNotFoundException $e) {
+            $response = $e->getApiResponse();
+        } catch (NoDataFoundException $e) {
+            $response = $e->getApiResponse();
+        }
 
         return $response;
     }
@@ -144,21 +158,26 @@ class TrackingApi
     }
 
     /**
-     * @param ExitCode $exitCode
+     * @param AbstractResponse $response
      * @return GlsTrackingApiException
      */
-    private function createException(ExitCode $exitCode)
+    private function createException(AbstractResponse $response)
     {
+        $exitCode = $response->getExitCode();
         switch ($exitCode->getCode()) {
             case ExitCode::CODE_AUTHENTICATION_ERROR:
-                return new AuthException($exitCode->getDescription(), $exitCode->getCode());
+                return new AuthException($exitCode->getDescription(), $exitCode->getCode(), $response);
             case ExitCode::CODE_NO_DATA_FOUND:
-                return new NoDataFoundException($exitCode->getDescription(), $exitCode->getCode());
+                return new NoDataFoundException($exitCode->getDescription(), $exitCode->getCode(), $response);
+            case ExitCode::CODE_IMAGE_NOT_FOUND:
+                return new ImageNotFoundException($exitCode->getDescription(), $exitCode->getCode(), $response);
         }
 
-        return new UnknownErrorCodeException(sprintf(
-            'Unknown error given with code "%s" and message "%s"', $exitCode->getCode(), $exitCode->getDescription()
-        ));
+        return new UnknownErrorCodeException(
+            sprintf('Unknown error given with code "%s" and message "%s"', $exitCode->getCode(), $exitCode->getDescription()),
+            $exitCode->getCode(),
+            $response
+        );
     }
 
     /**

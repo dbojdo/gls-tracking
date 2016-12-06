@@ -2,42 +2,22 @@
 /**
  * TuDetailsResponseDeserialisationTest.php
  *
- * @author dbojdo - Daniel Bojdo <daniel.bojdo@8x8.com>
- * Created on 05/12/2016 14:16
- * Copyright (C) 8x8, Inc.
+ * @author dbojdo - Daniel Bojdo <daniel.bojdo@web-it.eu>
+ * Created at: 2016-12-05 14:16
  */
 
 namespace Webit\GlsTracking\Tests\Model\Message;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use JMS\Serializer\EventDispatcher\EventDispatcherInterface;
-use JMS\Serializer\SerializerBuilder;
-use JMS\Serializer\SerializerInterface;
+use Webit\GlsTracking\Tests\AbstractGlsTrackingTest;
 use Webit\GlsTracking\Model\CustomerReference;
 use Webit\GlsTracking\Model\DateTime;
 use Webit\GlsTracking\Model\Event;
 use Webit\GlsTracking\Model\ExitCode;
 use Webit\GlsTracking\Model\Message\TuDetailsResponse;
-use Webit\GlsTracking\Model\Serialiser\TuDetailsResponseDeserialisationListener;
 
-class TuDetailsResponseDeserialisationTest extends \PHPUnit_Framework_TestCase
+class TuDetailsResponseDeserialisationTest extends AbstractGlsTrackingTest
 {
-    /**
-     * @var SerializerInterface
-     */
-    private $serialiser;
-
-    protected function setUp()
-    {
-        $builder = SerializerBuilder::create();
-        $builder->addDefaultListeners();
-        $builder->configureListeners(function (EventDispatcherInterface $dispatcher) {
-            $dispatcher->addSubscriber(new TuDetailsResponseDeserialisationListener());
-        });
-
-        $this->serialiser = $builder->build();
-    }
-
     /**
      * @test
      * @dataProvider tuDetailsResponse
@@ -46,7 +26,7 @@ class TuDetailsResponseDeserialisationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldDeserialiseTheTuDetailsResponse($json, TuDetailsResponse $expectedResponse)
     {
-        $response = $this->serialiser->deserialize($json, 'Webit\GlsTracking\Model\Message\TuDetailsResponse', 'json');
+        $response = $this->serialiser()->deserialize($json, 'Webit\GlsTracking\Model\Message\TuDetailsResponse', 'json');
 
         $this->assertEquals($expectedResponse, $response);
     }

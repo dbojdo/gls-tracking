@@ -14,7 +14,7 @@ $reference = $config['parcel-no'];
 
 $url = $urlProvider->getStandardTrackingUrl($reference, $config['country'], $config['language']);
 
-printf("Url for tracking \"%s\" (encrypted): %s\n", $reference, $url);
+printf("Url for tracking \"%s\" (standard): %s\n", $reference, $url);
 
 $url = $urlProvider->getEncryptedTrackingUrl($credentials, $reference, $config['language']);
 

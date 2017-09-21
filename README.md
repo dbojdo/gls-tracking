@@ -1,7 +1,6 @@
 # GLS Tracking SDK
 
 ## Installation
-### via Composer
 
 Add the **webit/gls-tracking** into **composer.json**
 
@@ -9,7 +8,7 @@ Add the **webit/gls-tracking** into **composer.json**
 {
     "require": {
         "php":              ">=5.3.2",
-        "webit/gls-tracking": "^1.0"
+        "webit/gls-tracking": "^2.0"
     }
 }
 ```
@@ -20,46 +19,26 @@ Add the **webit/gls-tracking** into **composer.json**
 
 ```php
 use Doctrine\Common\Annotations\AnnotationRegistry;
-use JMS\Serializer\EventDispatcher\EventDispatcherInterface;
-use JMS\Serializer\SerializerBuilder;
-use Webit\GlsTracking\Model\Serialiser\TuDetailsResponseDeserialisationSubscriber;
-use Webit\GlsTracking\Model\Serialiser\TuListResponseDeserialisationSubscriber;
-use Webit\SoapApi\SoapClient\SoapClientFactory;
 use Webit\GlsTracking\Api\Factory\TrackingApiFactory;
-use Webit\SoapApi\Input\InputNormalizerSerializerBased;
-use Webit\SoapApi\Hydrator\HydratorSerializerBased;
-use Webit\GlsTracking\Api\Exception\ExceptionFactory;
-use Webit\SoapApi\Util\BinaryStringHelper;
-use Webit\SoapApi\SoapApiExecutorFactory;
 use Webit\GlsTracking\Model\UserCredentials;
 
-AnnotationRegistry::registerAutoloadNamespace(
-    'JMS\Serializer\Annotation',
-    __DIR__.'/../vendor/jms/serializer/src'
-);
+$loader = include __DIR__.'/../vendor/autoload.php';
+AnnotationRegistry::registerLoader(array($loader, 'loadClass'));
 
-$builder = SerializerBuilder::create();
-$builder->addDefaultListeners();
-$builder->configureListeners(function (EventDispatcherInterface $dispatcher) {
-   $dispatcher->addSubscriber(new TuDetailsResponseDeserialisationSubscriber());
-   $dispatcher->addSubscriber(new TuListResponseDeserialisationSubscriber());
-});
-$serializer = $builder->build();
+if (is_file(__DIR__ .'/config.php') == false) {
+    throw new \LogicException(
+        'Missing required file "examples/config.php". Create it base on "examples/config.php.dist".'
+    );
+}
 
-$clientFactory = new SoapClientFactory();
-$executorFactory = new SoapApiExecutorFactory();
-$normalizer = new InputNormalizerSerializerBased($serializer);
-$hydrator = new HydratorSerializerBased($serializer, new BinaryStringHelper());
-$exceptionFactory = new ExceptionFactory();
+$config = require __DIR__ .'/config.php';
 
-$apiFactory = new TrackingApiFactory($clientFactory, $executorFactory, $normalizer, $hydrator, $exceptionFactory);
-
+$apiFactory = new TrackingApiFactory();
 ```
 
 ### Tracking API
 
 ```php
-
 $credentials = new UserCredentials('user', 'pass');
 
 $api = $apiFactory->createTrackingApi($credentials);
@@ -81,7 +60,9 @@ foreach ($details->getHistory() as $event) {
 printf("Received by: %s\n", $details->getSignature());
 
 $pod = $api->getProofOfDelivery($parcelNo);
+
 printf("Proof of delivery filename: %s\n", $pod->getFileName());
+file_put_contents('/your/docs/dir/' . $pod->getFileName(), $pod->getFile());
 ```
 
 ### Tracking Url Provider

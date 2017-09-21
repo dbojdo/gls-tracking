@@ -9,8 +9,8 @@
 
 namespace Webit\GlsTracing\Tests\Api;
 
-use Webit\GlsTracing\Tests\AbstractApiTest;
 use Webit\GlsTracking\Api\TrackingApi;
+use Webit\GlsTracking\Tests\AbstractApiTest;
 
 class TrackingApiTest extends AbstractApiTest
 {
@@ -55,9 +55,8 @@ class TrackingApiTest extends AbstractApiTest
      */
     public function shouldListParcelsByDate()
     {
-        $dateFrom = date_create('now-2days');
-        $dateTo = date_create('now-1days');
-
+        $dateFrom = date_create('now - 1 hours');
+        $dateTo = date_create('now');
         $list = $this->api->getParcelList(
             $dateFrom,
             $dateTo

@@ -26,7 +26,7 @@ use Webit\GlsTracking\Model\Message\TuPODRequest;
 use Webit\GlsTracking\Model\Message\TuPODResponse;
 use Webit\GlsTracking\Model\Parameters;
 use Webit\GlsTracking\Model\UserCredentials;
-use Webit\SoapApi\SoapApiExecutorInterface;
+use Webit\SoapApi\Executor\SoapApiExecutor;
 
 /**
  * Class TrackingApi
@@ -36,7 +36,7 @@ class TrackingApi
 {
 
     /**
-     * @var SoapApiExecutorInterface
+     * @var SoapApiExecutor
      */
     private $executor;
 
@@ -46,23 +46,23 @@ class TrackingApi
     private $credentials;
 
     /**
-     * @param SoapApiExecutorInterface $executor
+     * @param SoapApiExecutor $executor
      * @param UserCredentials $credentials
      */
-    public function __construct(SoapApiExecutorInterface $executor, UserCredentials $credentials)
+    public function __construct(SoapApiExecutor $executor, UserCredentials $credentials)
     {
         $this->executor = $executor;
         $this->credentials = $credentials;
     }
 
-    private function doRequest($soapFunction, AbstractRequest $request, $outputType = 'ArrayCollection')
+    private function doRequest($soapFunction, AbstractRequest $request)
     {
         $this->applyCredentials($request);
 
         $request = array($soapFunction => $request);
 
         /** @var AbstractResponse $response */
-        $response = $this->executor->executeSoapFunction($soapFunction, $request, $outputType);
+        $response = $this->executor->executeSoapFunction($soapFunction, $request);
         if ($response->getExitCode()->isSuccessfully() == false) {
             throw $this->createException($response);
         }
@@ -81,8 +81,7 @@ class TrackingApi
             /** @var TuDetailsResponse $response */
             $response = $this->doRequest(
                 'GetTuDetail',
-                new TuDetailsRequest($this->filterReferenceNo($reference), new Parameters('LangCode', $language)),
-                'Webit\GlsTracking\Model\Message\TuDetailsResponse'
+                new TuDetailsRequest($this->filterReferenceNo($reference), new Parameters('LangCode', $language))
             );
         } catch (NoDataFoundException $e) {
             $response = $e->getApiResponse();
@@ -113,8 +112,7 @@ class TrackingApi
                     $reference ? $this->filterReferenceNo($reference) : null,
                     $customerReference,
                     new Parameters('LangCode', $language)
-                ),
-                'Webit\GlsTracking\Model\Message\TuListResponse'
+                )
             );
 
         } catch (NoDataFoundException $e) {

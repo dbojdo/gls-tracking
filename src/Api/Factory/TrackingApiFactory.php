@@ -10,13 +10,15 @@ namespace Webit\GlsTracking\Api\Factory;
 
 use Webit\GlsTracking\Api\TrackingApi;
 use Webit\GlsTracking\Model\UserCredentials;
-use Webit\SoapApi\Exception\ExceptionFactoryInterface;
-use Webit\SoapApi\Hydrator\HydratorInterface;
-use Webit\SoapApi\Input\InputNormalizerInterface;
-use Webit\SoapApi\SoapApiExecutor;
-use Webit\SoapApi\SoapApiExecutorFactory;
-use Webit\SoapApi\SoapApiExecutorInterface;
-use Webit\SoapApi\SoapClient\SoapClientFactoryInterface;
+use Webit\SoapApi\Executor\SoapApiExecutor;
+use Webit\SoapApi\Executor\SoapApiExecutorBuilder;
+use Webit\SoapApi\Hydrator\ArrayHydrator;
+use Webit\SoapApi\Hydrator\ChainHydrator;
+use Webit\SoapApi\Hydrator\HydratorSerializerBased;
+use Webit\SoapApi\Hydrator\Serializer\ResultTypeMap;
+use Webit\SoapApi\Input\InputNormaliserSerializerBased;
+use Webit\SoapApi\Input\Serializer\StaticSerializationContextFactory;
+use Webit\SoapApi\Util\StdClassToArray;
 
 /**
  * Class TrackingApiFactory
@@ -27,54 +29,26 @@ class TrackingApiFactory
     const GLS_TRACKING_WSDL = 'http://www.gls-group.eu/276-I-PORTAL-WEBSERVICE/services/Tracking/wsdl/Tracking.wsdl';
 
     /**
-     * @var SoapClientFactoryInterface
+     * @var SerializerFactory
      */
-    private $clientFactory;
+    private $serializerFactory;
 
     /**
-     * @var SoapApiExecutorFactory
+     * @param SerializerFactory|null $serializerFactory
+     * @return TrackingApiFactory
      */
-    private $executorFactory;
+    public static function create(SerializerFactory $serializerFactory = null)
+    {
+        return new self($serializerFactory);
+    }
 
     /**
-     * @var InputNormalizerInterface
+     * TrackingApiFactory constructor.
+     * @param SerializerFactory $serializerFactory
      */
-    private $normalizer;
-
-    /**
-     * @var HydratorInterface
-     */
-    private $hydrator;
-
-    /**
-     * @var ExceptionFactoryInterface
-     */
-    private $exceptionFactory;
-
-    /**
-     * @var SoapApiExecutorInterface
-     */
-    private $executor;
-
-    /**
-     * @param SoapClientFactoryInterface $clientFactory
-     * @param SoapApiExecutorFactory $executorFactory
-     * @param InputNormalizerInterface $normalizer
-     * @param HydratorInterface $hydrator
-     * @param ExceptionFactoryInterface $exceptionFactory
-     */
-    public function __construct(
-        SoapClientFactoryInterface $clientFactory,
-        SoapApiExecutorFactory $executorFactory,
-        InputNormalizerInterface $normalizer,
-        HydratorInterface $hydrator,
-        ExceptionFactoryInterface $exceptionFactory
-    ) {
-        $this->clientFactory = $clientFactory;
-        $this->executorFactory = $executorFactory;
-        $this->normalizer = $normalizer;
-        $this->hydrator = $hydrator;
-        $this->exceptionFactory = $exceptionFactory;
+    public function __construct(SerializerFactory $serializerFactory = null)
+    {
+        $this->serializerFactory = $serializerFactory ?: new SerializerFactory();
     }
 
     /**
@@ -94,16 +68,33 @@ class TrackingApiFactory
      */
     private function getExecutor()
     {
-        if ($this->executor == null) {
-            $this->executor = $this->executorFactory->createExecutor(
-                $this->clientFactory->createSoapClient(self::GLS_TRACKING_WSDL),
-                $this->normalizer,
-                $this->hydrator,
-                null,
-                $this->exceptionFactory
-            );
-        }
+        $executorBuilder = SoapApiExecutorBuilder::create();
 
-        return $this->executor;
+
+        $serializer = $this->serializerFactory->create();
+
+        $executorBuilder->setInputNormaliser(
+            new InputNormaliserSerializerBased($serializer, new StaticSerializationContextFactory())
+        );
+
+        $executorBuilder->setWsdl(self::GLS_TRACKING_WSDL);
+        $executorBuilder->setHydrator(
+            new ChainHydrator(
+                array(
+                    new ArrayHydrator(new StdClassToArray()),
+                    new HydratorSerializerBased(
+                        $serializer,
+                        new ResultTypeMap(
+                            array(
+                                'GetTuDetail' => 'Webit\GlsTracking\Model\Message\TuDetailsResponse',
+                                'GetTuList' => 'Webit\GlsTracking\Model\Message\TuListResponse',
+                                'GetTuPOD' => 'Webit\GlsTracking\Model\Message\TuPODResponse'
+                            )
+                        )
+                    )
+                )
+            )
+        );
+        return $executorBuilder->build();
     }
 }

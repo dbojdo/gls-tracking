@@ -4,3 +4,4 @@ vendor/
 /.idea
 examples/config.php
 phpunit.xml
+

@@ -1,24 +1,10 @@
 <?php
-require __DIR__.'/../vendor/autoload.php';
-
 use Doctrine\Common\Annotations\AnnotationRegistry;
-use JMS\Serializer\EventDispatcher\EventDispatcherInterface;
-use JMS\Serializer\SerializerBuilder;
-use Webit\GlsTracking\Model\Serialiser\TuDetailsResponseDeserialisationSubscriber;
-use Webit\GlsTracking\Model\Serialiser\TuListResponseDeserialisationSubscriber;
-use Webit\SoapApi\SoapClient\SoapClientFactory;
 use Webit\GlsTracking\Api\Factory\TrackingApiFactory;
-use Webit\SoapApi\Input\InputNormalizerSerializerBased;
-use Webit\SoapApi\Hydrator\HydratorSerializerBased;
-use Webit\GlsTracking\Api\Exception\ExceptionFactory;
-use Webit\SoapApi\Util\BinaryStringHelper;
-use Webit\SoapApi\SoapApiExecutorFactory;
 use Webit\GlsTracking\Model\UserCredentials;
 
-AnnotationRegistry::registerAutoloadNamespace(
-    'JMS\Serializer\Annotation',
-    __DIR__.'/../vendor/jms/serializer/src'
-);
+$loader = include __DIR__.'/../vendor/autoload.php';
+AnnotationRegistry::registerLoader(array($loader, 'loadClass'));
 
 if (is_file(__DIR__ .'/config.php') == false) {
     throw new \LogicException(
@@ -28,21 +14,7 @@ if (is_file(__DIR__ .'/config.php') == false) {
 
 $config = require __DIR__ .'/config.php';
 
-$builder = SerializerBuilder::create();
-$builder->addDefaultListeners();
-$builder->configureListeners(function (EventDispatcherInterface $dispatcher) {
-    $dispatcher->addSubscriber(new TuDetailsResponseDeserialisationSubscriber());
-    $dispatcher->addSubscriber(new TuListResponseDeserialisationSubscriber());
-});
-$serializer = $builder->build();
-
-$clientFactory = new SoapClientFactory();
-$executorFactory = new SoapApiExecutorFactory();
-$normalizer = new InputNormalizerSerializerBased($serializer);
-$hydrator = new HydratorSerializerBased($serializer, new BinaryStringHelper());
-$exceptionFactory = new ExceptionFactory();
-
-$apiFactory = new TrackingApiFactory($clientFactory, $executorFactory, $normalizer, $hydrator, $exceptionFactory);
+$apiFactory = new TrackingApiFactory();
 
 $credentials = new UserCredentials($config['username'], $config['password']);
 

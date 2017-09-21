@@ -11,7 +11,8 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "webit/soap-api": "~1.0"
+        "webit/soap-api": "^2.0.3",
+        "jms/serializer": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.6.0"

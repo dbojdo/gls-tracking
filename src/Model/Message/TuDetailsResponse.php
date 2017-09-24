@@ -204,7 +204,7 @@ class TuDetailsResponse extends AbstractResponse
      */
     public function getHistory()
     {
-        return $this->history;
+        return $this->history ?: new ArrayCollection();
     }
 
     /**

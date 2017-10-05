@@ -9,6 +9,7 @@
             "email": "daniel.bojdo@web-it.eu"
         }
     ],
+    "license": "MIT",
     "require": {
         "php": ">=5.3.3",
         "webit/soap-api": "^2.0.3",

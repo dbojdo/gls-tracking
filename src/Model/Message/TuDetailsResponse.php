@@ -85,7 +85,7 @@ class TuDetailsResponse extends AbstractResponse
     private $product;
 
     /**
-     * @JMS\Type("string")
+     * @JMS\Type("ArrayCollection<string>")
      * @JMS\SerializedName("Services")
      *
      * @var string
@@ -134,7 +134,7 @@ class TuDetailsResponse extends AbstractResponse
      * @param Address $requesterAddress
      * @param DateTime $deliveryDateTime
      * @param DateTime $pickupDateTime
-     * @param string $product
+     * @param array|ArrayCollection $product
      * @param string $services
      * @param ArrayCollection $customerReference
      * @param float $tuWeight
@@ -167,13 +167,27 @@ class TuDetailsResponse extends AbstractResponse
         $this->deliveryDateTime = $deliveryDateTime;
         $this->pickupDateTime = $pickupDateTime;
         $this->product = $product;
-        $this->services = $services ?: new ArrayCollection();
+        $this->setServices($services);
         $this->customerReference = $customerReference ?: new ArrayCollection();
         $this->tuWeight = $tuWeight;
         $this->history = $history ?: new ArrayCollection();
         $this->signature = $signature;
     }
 
+    private function setServices($services)
+    {
+        if (is_array($services)) {
+            $this->services = new ArrayCollection($services);
+            return;
+        }
+
+        if (is_string($services)) {
+            $this->services = new ArrayCollection(array($services));
+            return;
+        }
+
+        $this->services = new ArrayCollection();
+    }
 
     /**
      * @return Address
@@ -240,11 +254,11 @@ class TuDetailsResponse extends AbstractResponse
     }
 
     /**
-     * @return string
+     * @return ArrayCollection
      */
     public function getServices()
     {
-        return $this->services;
+        return $this->services ?: new ArrayCollection();
     }
 
     /**

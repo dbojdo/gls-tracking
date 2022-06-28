@@ -24,7 +24,7 @@ class TuDetailsResponseDeserialisationSubscriber implements EventSubscriberInter
     public function __construct()
     {
         $this->innerListener = new CollectionEnsuringDeserialisationListener(
-            array('CustomerReference', 'History')
+            array('CustomerReference', 'History', 'Services')
         );
     }
 

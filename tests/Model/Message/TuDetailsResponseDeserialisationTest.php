@@ -50,7 +50,7 @@ class TuDetailsResponseDeserialisationTest extends AbstractGlsTrackingTest
                     new DateTime(2016, 11, 17, 8, 41),
                     new DateTime(2016, 11, 16, 19, 51),
                     "ExpressParcel",
-                    "10:00Service",
+                    array("10:00Service"),
                     new ArrayCollection(
                         array(
                             new CustomerReference("Customer Reference Type", "23254333"),
@@ -95,7 +95,7 @@ class TuDetailsResponseDeserialisationTest extends AbstractGlsTrackingTest
                     new DateTime(2016, 11, 17, 8, 41),
                     new DateTime(2016, 11, 16, 19, 51),
                     "ExpressParcel",
-                    "10:00Service",
+                    array("10:00Service"),
                     new ArrayCollection(
                         array(
                             new CustomerReference("Customer Reference Type", "23254333")
